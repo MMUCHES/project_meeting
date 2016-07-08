@@ -1,0 +1,136 @@
+ <section class="container" ng-controller="ConferenceViewController">
+
+  <div class="col-sm-3" > <!-- style="display: none;" -->
+    <ul class="list-group" role="tablist" >
+      <div role="presentation" class="active"><a class="list-group-item" href="#agenda0" aria-controls="agenda0" role="tab" data-toggle="tab">วาระการประชุม</a></div>
+      <div role="presentation" class="active"><a class="list-group-item" href="#agenda1" aria-controls="agenda1" role="tab" data-toggle="tab">วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</a></div>
+      <div role="presentation" class="active"><a class="list-group-item" href="#agenda2" aria-controls="agenda2" role="tab" data-toggle="tab">วาระที่ 2 เรื่องรับรองรายงานการประชุม</a></div>
+      <div role="presentation" class="active"><a class="list-group-item" href="#agenda3" aria-controls="agenda3" role="tab" data-toggle="tab">วาระที่ 3 เรื่องสืบเนื่อง</a></div>
+      <div role="presentation" class="active"><a class="list-group-item" href="#agenda4" aria-controls="agenda4" role="tab" data-toggle="tab">วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</a></div>
+      <div role="presentation" class="active"><a class="list-group-item" href="#agenda5" aria-controls="agenda5" role="tab" data-toggle="tab">วาระที่ 5 เรื่องอื่น</a></div>
+      <div role="presentation" onclick="goFullScreen()"><a class="list-group-item">go full screen</a></div>
+    </ul>
+  </div>
+  <div class="col-sm-9" id="block1" >
+  <div id="show">
+    <div class="tab-content" ng-repeat="alert in agendas">
+      <div role="tabpanel" class="tab-pane {{alert.chapter0}}" id="agenda0">
+        <h3 style="text-align: center;">{{conference.topic}}</h3>
+        <h3 style="text-align: center;">{{conference.number}}></h3>
+        <h3 style="text-align: center;">{{conference.conferenceDate}}</h3>
+        <h3 style="text-align: center;">{{conference.conferenceTime}}</h3>
+        <h3 style="text-align: center;">{{conference.conferencePlace}}</h3>
+        <h3 style="text-align: center;">***************************</h3>
+      </div>
+
+      <div role="tabpanel" class="tab-pane {{alert.chapter1}}" id="agenda1" style="margin-top: 15px;margin-bottom: 15px;margin-left: 15px;margin-right: 15px;">
+        <div>
+          <p><strong>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</strong></p>
+          <div ng-repeat="content in conference.topic_one.contents">
+            <p><strong>{{content.header}}</strong></p>
+            <p style="margin-left: 20px;">{{content.content}}</p>
+          </div>
+        </div>
+      </div>
+      <div role="tabpanel" class="tab-pane {{alert.chapter2}}" id="agenda2" style="margin-top: 15px;margin-bottom: 15px;margin-left: 15px;margin-right: 15px;">
+        <div>
+          <p><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>
+          <div ng-repeat="content in conference.topic_two.contents">
+            <p><strong>{{content.header}}</strong></p>
+            <p style="margin-left: 20px;">{{content.content}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane {{alert.chapter3}}" id="agenda3" style="margin-top: 15px;margin-bottom: 15px;margin-left: 15px;margin-right: 15px;">
+        <div>
+          <p><strong>วาระที่ 3 เรื่องสืบเนื่อง</strong></p>
+          <div ng-repeat="content in conference.topic_three.contents">
+            <p><strong>{{content.header}}</strong></p>
+            <p style="margin-left: 20px;">{{content.content}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane {{alert.chapter4}}" id="agenda4" style="margin-top: 15px;margin-bottom: 15px;margin-left: 15px;margin-right: 15px;">
+        <div ng-repeat="content in conference.topic_four.contents">
+          <p><strong>วาระที่ 4 {{conference.topic_four.title}}</strong></p>
+          <p>{{content.header}}</p>
+          <p>{{content.content}}</p>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane {{alert.chapter5}}" id="agenda5" style="margin-top: 15px;margin-bottom: 15px;margin-left: 15px;margin-right: 15px;">
+        <div>
+          <p><strong>วาระที่ 5 เรื่องอื่นๆ</strong></p>
+          <div ng-repeat="content in conference.topic_five.contents">
+            <p><strong>{{content.header}}</strong></p>
+            <p style="margin-left: 20px;">{{content.content}}</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+  </div>
+
+  <style>
+    #body {
+      background: url(/modules/articles/client/img/bg.jpg) no-repeat fixed;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      width: 100%;
+      height: 100%;
+    }
+    .copyright {
+      visibility: hidden
+    }
+    .navbar{
+      visibility: hidden
+    }
+  /*  #block1{
+      background-color: #fff;
+      color: #000;
+    }*/
+    #block1{
+      background-color: #fff;
+      color: #000;
+      position:fixed;
+      top:0; 
+      right:0; 
+      bottom:0; 
+      left:0;
+      margin:0;
+      box-sizing:border-box;
+      width:100%;
+      height:100%;
+      object-fit:contain;
+
+    }
+    #show{
+      margin: 50px;
+    }
+  </style>
+  <script>
+    var runPixelTests = true;
+
+    function init() {
+                // Bail out early if the full screen API is not enabled or is missing:
+                if (Element.prototype.webkitRequestFullScreen == undefined) {
+                  logResult(false, "Element.prototype.webkitRequestFullScreen == undefined");
+                  endTest();
+                } else {
+                  waitForEventAndEnd(document, 'webkitfullscreenchange');
+                  runWithKeyDown(goFullScreen);
+                }
+              }
+
+              function goFullScreen() {
+                document.getElementById('block1').webkitRequestFullScreen();
+              }
+            </script>
+
+          </section>
+
+

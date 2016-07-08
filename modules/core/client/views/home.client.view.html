@@ -1,0 +1,65 @@
+<section data-ng-controller="HomeController">
+  <div class="row">
+
+    <div class="page-header">
+      <ol class="breadcrumb ">
+        <li><a ui-sref="home"  class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li>หน้าหลัก</li>
+      </ol>
+    </div>
+    <div style="margin-top: 30px;" class="col-sm-5" ng-repeat="alert in alerts">
+      <div class="row">
+        <legend>การเข้าใช้งานระบบ</legend>
+        <br>
+        <p>การเข้าใช้งานระบบจะต้องใช้งานผ่านเว็บบราวเซอร์ ดังต่อไปนี้</p>
+        <p>1.Google Chrome <a href="https://www.google.com/intl/th/chrome/browser/desktop/" target="_tpo"> &nbsp &nbsp ต้องการติดตั้ง Google Chrome</a></p>
+        <p>2.Firefox <a href="https://www.mozilla.org/th/firefox/new/#download-fx" target="_tpo"> &nbsp &nbsp ต้องการติดตั้ง Firefox</a></p>
+        <p>3.Internet Explorer 9 <a href="http://internet-explorer-9.th.softonic.com/" target="_tpo"> &nbsp &nbsp ต้องการติดตั้ง Internet Explorer 9</a></p>
+      </div>
+      <div style="margin-top: 20px;" class="row">
+       <p><strong>คุณจะสามารถเข้าใช้งานจากสมาร์ทโฟน แท็บเล็ต หรือคอมพิวเตอร์ ไม่ว่าจะอยู่ที่ไหน การใช้งานก็สามารถทำได้</strong></p>
+       <img  class="img-responsive" ng-src="/modules/core/client/img/desktop.png">
+     </div>
+   </div>
+   <div ng-controller="ArticlesController" ng-init="find()" class="col-sm-7 " >
+     <div style="margin-top:30px;" class="mainbox col-md-12 " >  
+
+
+      <div class="panel panel-info" >
+        <div class="panel-heading">
+          <div class="panel-title">ข่าวสารการประชุม 
+          </div>
+        </div>
+
+        <div style="padding-top:30px" class="panel-body menu scrollable-menu" role="menu" >
+          <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>  
+          <div class="row">
+           <div class="col-sm-6 col-md-12" ng-controller="ConferenceListController">
+             <div ng-repeat="conference in conferences"  class="thumbnail">
+              <div class="caption">
+                <span ng-bind="(variable | number: 1) + '%'"
+                class="animated" ng-show="variable"
+                ng-class="{'fadeIn':variable}"></span>
+                <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
+                <p><span ng-bind="conference.conferenceDate"></span>
+                  เวลา<span ng-bind="conference.conferenceTime"></span>
+                  <span ng-bind="conference.conferencePlace"></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>  
+
+    </div>
+  </div>
+  <style type="text/css">
+    .scrollable-menu {
+      height: auto;
+      max-height: 450px;
+      overflow-x: hidden;
+    }
+  </style>
+</section>
+
+

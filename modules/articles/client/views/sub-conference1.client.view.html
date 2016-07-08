@@ -1,0 +1,138 @@
+<section ng-controller="ConferenceViewController">
+
+    <div class="page-header">
+        <ol class="breadcrumb ">
+            <li><a ui-sref="conferences.subconference({conferenceId: conference._id})" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left
+"></i></a></li>
+            <li>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</li>
+        </ol>
+    </div>
+
+
+    <div class="modal-body">
+        <div class="thumbnail">
+            <div class="form-group clearfix">
+                <div style="margin-top: 5px;" class="col-sm-12">
+                    <button class="btn btn-success  glyphicon glyphicon-download-alt" type="button"
+                            ng-click="addSubContent(conference.topic_one,newContent)"> เพิ่ม
+                    </button>
+                    <button class="btn btn-warning  glyphicon glyphicon-saved" ng-click="update()"
+                            type="button"> บันทึกการแก้ไข
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ลำดับ</th>
+                <th>หัวข้อ</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="content in conference.topic_one.contents ">
+                <td class="col-sm-1">{{$index+1}}</td>
+                <td class="">
+
+                    <div class="media">
+                        <div class="media-body">
+                            <h4 class="media-heading" ng-show="!content.isEditMode">
+                                {{content.header}}
+                            </h4>
+                            <div class="media-heading " ng-show="content.isEditMode">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" ng-model="content.header">
+                                    </div>
+                                </div>
+                            </div>
+                            <p ng-show="!content.isEditMode">
+                                {{content.content}}
+                            </p>
+                            <div class="form-group" ng-show="content.isEditMode">
+                                <label class="col-sm-2 control-label">สาระสำคัญ</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="5" ng-show="content.isEditMode"
+                                              ng-model="content.content"></textarea>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="media-right">
+                            <button class="btn btn-danger btn-block" type="button"
+                                    ng-click="removeContent(conference.topic_one,content,$index)">ลบ
+                            </button>
+                            <button ng-show="!content.isEditMode" class="btn btn-info btn-block" type="button"
+                                    ng-click="toggleEditContent(conference.topic_one,content,$index)">
+                                แก้ไข
+                            </button>
+                            <button ng-show="content.isEditMode" class="btn btn-info btn-block" type="button"
+                                    ng-click="toggleEditContent(conference.topic_one,content,$index)">
+                                บันทึก
+                            </button>
+                            <button class="btn btn-primary btn-block" type="button"
+                                    ng-click="addSubDetailContent(conference.topic_one,content,$index)">เพิ่มรายละเอียด
+                            </button>
+                        </div>
+                        <div class="media" ng-repeat="subContent in content.subContents">
+                            <hr/>
+                            <div class="media">
+                            <div class="media-body">
+
+                                <h4 class="media-heading" ng-show="!subContent.isEditMode">
+                                    {{subContent.header}}
+                                </h4>
+                                <div class="media-heading" ng-show="subContent.isEditMode">
+                                    <div class="form-group" ng-show="subContent.isEditMode">
+                                        <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" ng-model="subContent.header"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p ng-show="!subContent.isEditMode">
+                                    {{subContent.content}}
+                                </p>
+                                <div class="form-group" ng-show="subContent.isEditMode">
+                                    <label class="col-sm-2 control-label">สาระสำคัญ</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="5"
+                                                  ng-model="subContent.content"></textarea>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="media-right">
+                                <button class="btn btn-danger btn-block" type="button"
+                                        ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
+                                </button>
+                                <button ng-show="!subContent.isEditMode" class="btn btn-info btn-block" type="button"
+                                        ng-click="toggleEditDetailContent(content,subContent,$index)">
+                                    แก้ไข
+                                </button>
+                                <button ng-show="subContent.isEditMode" class="btn btn-info btn-block" type="button"
+                                        ng-click="toggleEditDetailContent(content,subContent,$index)">
+                                    บันทึก
+                                </button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <style type="text/css">
+        .table.no-border tr td, .table.no-border tr th {
+            border-width: 0;
+        }
+    </style>
+
+</section>

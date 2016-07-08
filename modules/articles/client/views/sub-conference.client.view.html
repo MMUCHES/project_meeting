@@ -1,0 +1,58 @@
+<section ng-controller="ConferenceViewController">
+
+    <div class="page-header">
+        <ol class="breadcrumb ">
+            <li><a ui-sref="conferences.view({conferenceId: conference._id})" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left
+"></i></a></li>
+            <li>แก้ไขระเบียบวาระการประชุม</li>
+        </ol>
+    </div>
+    <div class="mainbox col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">{{conference.topic}}</div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body">
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                <form class="form-horizontal" ng-submit="update()">
+                    <ul class="list-group clearfix">
+                        <li class="list-group-item clearfix">วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ
+                            <button ui-sref="conferences.subconference1({conferenceId: conference._id})" type="button"
+                                    class="btn btn-success pull-right glyphicon glyphicon-edit"> เพิ่มรายละเอียด
+                            </button>
+                            <div style="margin-top: 10px;" ng-repeat="content in conference.topic_one.contents">
+                            </div>
+                        </li>
+                        <li class="list-group-item clearfix">วาระที่ 2 เรื่องรับรองรายงานการประชุม
+                            <button ui-sref="conferences.subconference2({conferenceId: conference._id})" type="button"
+                                    class="btn btn-success pull-right glyphicon glyphicon-edit"> เพิ่มรายละเอียด
+                            </button>
+                            <div style="margin-top: 10px;" ng-repeat="content in conference.topic_two.contents">
+                            </div>
+                        </li>
+                        <li class="list-group-item clearfix">วาระที่ 3 เรื่องสืบเนื่อง
+                            <button ui-sref="conferences.subconference3({conferenceId: conference._id})" type="button"
+                                    class="btn btn-success pull-right glyphicon glyphicon-edit"> เพิ่มรายละเอียด
+                            </button>
+                            <div style="margin-top: 10px;" ng-repeat="content in conference.topic_three.contents">
+                            </div>
+                        </li>
+                        <li class="list-group-item clearfix">วาระที่ 4 เรื่องเสนอเพื่อพิจารณา
+                            <button ui-sref="conferences.subconference4({conferenceId: conference._id})" type="button"
+                                    class="btn btn-success pull-right glyphicon glyphicon-edit"> เพิ่มรายละเอียด
+                            </button>
+                            <div style="margin-top: 10px;" ng-repeat="content in conference.topic_four.contents">
+                            </div>
+                        </li>
+                        <li class="list-group-item clearfix">วาระที่ 5 เรื่องอื่น ๆ
+                            <button ui-sref="conferences.subconference5({conferenceId: conference._id})" type="button"
+                                    class="btn btn-success pull-right glyphicon glyphicon-edit"> เพิ่มรายละเอียด
+                            </button>
+                            <div style="margin-top: 10px;" ng-repeat="content in conference.topic_five.contents">
+                            </div>
+                        </li>
+                    </ul>
+
+            </div>
+</section>

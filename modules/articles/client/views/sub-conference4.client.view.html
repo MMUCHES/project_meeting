@@ -1,0 +1,71 @@
+<section ng-controller="ConferenceViewController">
+
+    <div class="page-header">
+        <ol class="breadcrumb ">
+            <li><a ui-sref="conferences.subconference({conferenceId: conference._id})" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left
+"></i></a></li>
+            <li>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</li>
+        </ol>
+    </div>
+
+    <div class="modal-body">
+        <div class="thumbnail">
+            <div class="form-group ">
+                <div style="margin-top: 5px;" class="col-sm-12">
+                    <label class="col-sm-2 control-label" for="title">ชื่อเรื่อง</label>
+                    <div class="col-sm-6">
+                        <input name="" type="text" ng-model="newContent.header"
+                               class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div style="margin-top: 5px;" class="col-sm-12">
+                    <label class="col-sm-2 control-label" for="title">สารสำคัญ </label>
+                    <div class="col-sm-8">
+                        <textarea class="form-control" rows="5" type="text" ng-model="newContent.content"
+                                  class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group clearfix">
+                <div style="margin-top: 5px;" class="col-sm-12">
+                    <button class="btn btn-warning pull-right glyphicon glyphicon-saved" ng-click="update()"
+                            type="button"> บันทึกทั้งหมด
+                    </button>
+                    <button class="btn btn-success pull-right glyphicon glyphicon-download-alt" type="button"
+                            ng-click="addSubContent(conference.topic_four,newContent)"> เพิ่ม
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table no-border">
+            <thead ng-repeat="content in conference.topic_four.contents">
+            <tr>
+                <td class="col-sm-5">
+                    <input class="form-control" value="{{content.header}}" ng-model="content.header"/>
+                </td>
+                <td class="col-sm-6">
+                     <textarea class="form-control" rows=4 value="{{content.contentr}}" type="text"
+                               ng-model="content.content"
+                               class="form-control"></textarea>
+                </td>
+                <td class="col-sm-1">
+                    <button class="btn btn-danger btn-block" type="button"
+                            ng-click="removeContent(conference.topic_four,content,$index)">ลบ
+                    </button>
+                </td>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <style type="text/css">
+        .table.no-border tr td, .table.no-border tr th {
+            border-width: 0;
+        }
+    </style>
+
+</section>

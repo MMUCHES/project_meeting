@@ -1,0 +1,67 @@
+<div ng-controller="AuthenticationController">
+  <div style="margin-top:10px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">  
+  <div class="panel panel-info" >
+    <div class="panel-heading">
+        <div class="panel-title">สร้างบัญชี</div>
+    </div>     
+    <div style="padding-top:30px" class="panel-body" >
+        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div> 
+        <form style="margin-left:20px;margin-right:20px;" name="userForm" ng-submit="signup(userForm.$valid)"  class="form-horizontal" role="form">
+            <div class="form-group" show-errors>
+          <label for="firstName">ชื่อ</label>
+          <input type="text" id="firstName" name="firstName" class="form-control" ng-model="credentials.firstName"  required>
+          <div ng-messages="userForm.firstName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">First name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="lastName">นามสกุล</label>
+          <input type="text" id="lastName" name="lastName" class="form-control" ng-model="credentials.lastName"  required>
+          <div ng-messages="userForm.lastName.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Last name is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="email">อีเมล</label>
+          <input type="email" id="email" name="email" class="form-control" ng-model="credentials.email" lowercase required>
+          <div ng-messages="userForm.email.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Email address is required.</p>
+            <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="username">ชื่อผู้ใช้งาน</label>
+          <input type="text" id="username" name="username" class="form-control" ng-model="credentials.username"  lowercase required>
+          <div ng-messages="userForm.username.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Username is required.</p>
+          </div>
+        </div>
+        <div class="form-group" show-errors>
+          <label for="password">สร้างรหัสผ่าน</label>
+            <input type="password" id="password" name="password" class="form-control" ng-model="credentials.password"  popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
+          <div ng-messages="userForm.password.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Password is required.</p>
+            <div ng-repeat="passwordError in passwordErrors">
+              <p class="help-block error-text" ng-show="userForm.password.$error.requirements">{{passwordError}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="form-group" ng-show="!userForm.password.$error.required">
+          <label>Password Requirements</label>
+          <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
+        </div>
+        <div class="text-center form-group">
+          <button type="submit" class="btn btn-success">สร้างบัญชี</button>
+          &nbsp; หรือ&nbsp;
+          <a ui-sref="authentication.signin" class="show-signup">เข้าสู่ระบบ</a>
+        </div>
+        <div ng-show="error" class="text-center text-danger">
+          <strong ng-bind="error"></strong>
+        </div>   
+                  </form>     
+                  </div>                     
+                  </div>  
+              </div>
+</div>
+
+  

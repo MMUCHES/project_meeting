@@ -1,0 +1,55 @@
+<section ng-controller="ConferenceListController">
+    <div class="page-header">
+        <ol class="breadcrumb ">
+            <li><a ui-sref="home" class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
+            <li>รายการประชุมทั้งหมด</li>
+        </ol>
+    </div>
+    <div style="margin-top:10px;" class="mainbox col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">รายการประชุมทั้งหมด</div>
+            </div>
+            <div style="padding-top:30px" class="panel-body">
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-md-12">
+                        <div ng-show="authentication.user._id == conference.user._id"
+                             ui-sref="conferences.view({conferenceId: conference._id})"
+                             ng-repeat="conference in conferences" class="thumbnail">
+                            <div class="caption"><span ng-bind="(variable | number: 1) + '%'"
+                                                       class="animated" ng-show="variable"
+                                                       ng-class="{'fadeIn':variable}"></span>
+                                <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
+
+
+                                <p style="color: #0099FF" ng-bind="conference.topic_one.title"></p>
+                                <p style="color: #0099FF" ng-bind="conference.header"></p>
+
+
+                                <p><span ng-bind="conference.conferenceDate"></span>
+                                    เวลา<span ng-bind="conference.conferenceTime"></span>
+                                    <span ng-bind="conference.conferencePlace"></span><br>
+                                    <small>
+                                        สร้างการประชุมโดย <span ng-bind="conference.user.displayName"></span>
+                                    </small>
+                                </p>
+                                </p>
+                                <p ng-show="authentication.user._id == conference.user._id"
+                                   ui-sref="conferences.view({conferenceId: conference._id})" class="text-right"><a
+                                        class="btn btn-success "
+                                        role="button"><span
+                                        class="glyphicon glyphicon-edit"></span> เพิ่มรายละเอียดการประชุม</a></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="alert alert-warning text-center" ng-if="articles.$resolved && !articles.length">
+        คุณยังไม่ได้สร้างการประชุม <a ui-sref="articles.create">สร้างการประชุมแรกของคุณ</a>
+    </div>
+</section>
