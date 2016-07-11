@@ -85,6 +85,7 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
             content.subContents.push({
                 header: "",
                 content: "",
+                isEditMode : true
             });
         };
 
