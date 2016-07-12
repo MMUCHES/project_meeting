@@ -42,7 +42,7 @@
                             <h4 class="media-heading" ng-show="!content.isEditMode">
                                 {{content.header}}
                             </h4>
-                            <div class="media-heading " ng-show="content.isEditMode">
+                            <div class="media-heading "  ng-show="content.isEditMode">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
                                     <div class="col-sm-10">
@@ -64,9 +64,6 @@
 
                         </div>
                         <div class="media-right">
-                            <button class="btn btn-danger btn-block" type="button"
-                                    ng-click="removeContent(conference.topic_one,content,$index)">ลบ
-                            </button>
                             <button ng-show="!content.isEditMode" class="btn btn-info btn-block" type="button"
                                     ng-click="toggleEditContent(conference.topic_one,content,$index)">
                                 แก้ไข
@@ -77,6 +74,9 @@
                             </button>
                             <button class="btn btn-primary btn-block" type="button"
                                     ng-click="addSubDetailContent(conference.topic_one,content,$index)">เพิ่มรายละเอียด
+                            </button>
+                            <button class="btn btn-danger btn-block" type="button"
+                                    ng-click="removeContent(conference.topic_one,content,$index)">ลบ
                             </button>
                         </div>
                         <div class="media" ng-repeat="subContent in content.subContents">
@@ -107,9 +107,6 @@
                                     </div>
                                 </div>
                                 <div class="media-right">
-                                    <button class="btn btn-danger btn-block" type="button"
-                                            ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
-                                    </button>
                                     <button ng-show="!subContent.isEditMode" class="btn btn-info btn-block"
                                             type="button"
                                             ng-click="toggleEditDetailContent(content,subContent,$index)">
@@ -119,6 +116,9 @@
                                             ng-click="toggleEditDetailContent(content,subContent,$index)">
                                         บันทึก
                                     </button>
+                                    <button class="btn btn-danger btn-block" type="button"
+                                                     ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
+                                </button>
                                 </div>
                             </div>
                         </div>

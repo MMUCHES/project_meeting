@@ -1,7 +1,7 @@
 <section ng-controller="ConferenceListController">
     <div class="page-header">
         <ol class="breadcrumb ">
-            <li><a ui-sref="home" class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
+            <li><a ui-sref="home" class="btn bg_1"><i class="glyphicon glyphicon-home"></i></a></li>
             <li>รายการประชุมทั้งหมด</li>
         </ol>
     </div>
@@ -38,9 +38,9 @@
                                 </p>
                                 <p ng-show="authentication.user._id == conference.user._id"
                                    ui-sref="conferences.view({conferenceId: conference._id})" class="text-right"><a
-                                        class="btn btn-success "
+                                        class="btn bg_1"
                                         role="button"><span
-                                        class="glyphicon glyphicon-edit"></span> เพิ่มรายละเอียดการประชุม</a></p>
+                                        class="glyphicon glyphicon-edit"></span> เพิ่มรายละเอียด</a></p>
 
                             </div>
                         </div>

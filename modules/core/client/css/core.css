@@ -12,8 +12,16 @@ html {
   position: relative;
   min-height: 100%;
 }
+.bg_1{
+  background-color: #ad8ae3;
+  color: #FFFFFF;
+}
+.panel > .panel-heading {
+  background-image: none;
+  background-color: #ad8ae3;
+  color: #FFFFFF;
 
-
+}
 .content {
   margin-top: 50px;
 }

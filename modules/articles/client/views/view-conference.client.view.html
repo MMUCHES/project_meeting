@@ -2,7 +2,7 @@
 
     <div class="page-header">
         <ol class="breadcrumb ">
-            <li><a ui-sref="articles.list" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
+            <li><a ui-sref="articles.list" class="btn bg_1"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
             <li>{{conference.topic}}</li>
         </ol>
     </div>
@@ -16,16 +16,24 @@
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                 <div class="col-md-12">
                     <div class="row">
-                        <div class="col-sm-6 col-md-12">
-                            <!-- Split button -->
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-success">เพิ่มรายละเอียดการประชุม</button>
-                                <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
-                                        aria-haspopup="true" aria-expanded="false">
-                                    <span class="caret"></span>
-                                    <span class="sr-only">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu">
+                            <div class="thumbnail  col-sm-12" >
+                                <div class="caption col-sm-9"><span ng-bind="(variable | number: 1) + '%'"
+                                                           class="animated" ng-show="variable"
+                                                           ng-class="{'fadeIn':variable}"></span>
+                                    <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
+                                    <p><span ng-bind="conference.conferenceDate"></span>
+                                        เวลา<span ng-bind="conference.conferenceTime"></span>
+                                        <span ng-bind="conference.conferencePlace"></span><br>
+                                        <small>
+                                            สร้างการประชุมโดย <span ng-bind="conference.user.displayName"></span>
+                                        </small>
+                                    </p>
+                                </div>
+                                <div class="btn-group col-sm-3">
+                                    <button type="button" class="btn bg_1 pull-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        เพิ่มรายละเอียด <span class="caret"></span>
+                                    </button>
+                                <ul class="dropdown-menu pull-right">
                                     <li><a ui-sref="conferences.editarticle({conferenceId: conference._id})"
                                            class="glyphicon glyphicon-edit"> แก้ไขการประชุม</a></li>
                                     <li><a ui-sref="conferences.subconference({conferenceId: conference._id})"
@@ -40,22 +48,8 @@
                                     <li><a id="myBtn" class="glyphicon glyphicon-trash"> ลบการประชุม</a></li>
                                 </ul>
                             </div>
-                            <!-- Split button -->
-                            <div class="thumbnail">
-                                <div class="caption"><span ng-bind="(variable | number: 1) + '%'"
-                                                           class="animated" ng-show="variable"
-                                                           ng-class="{'fadeIn':variable}"></span>
-                                    <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
-                                    <p><span ng-bind="conference.conferenceDate"></span>
-                                        เวลา<span ng-bind="conference.conferenceTime"></span>
-                                        <span ng-bind="conference.conferencePlace"></span><br>
-                                        <small>
-                                            สร้างการประชุมโดย <span ng-bind="conference.user.displayName"></span>
-                                        </small>
-                                    </p>
-                                </div>
                             </div>
-                        </div>
+
                     </div>
                 </div>
 
