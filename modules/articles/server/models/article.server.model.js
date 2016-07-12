@@ -8,12 +8,16 @@ var File = new Schema({
     url: String,
 });
 
+
+
 var Content = new Schema({
     header: String,
     content: String,
     files: [File],
     subContents : [this]
 });
+
+
 
 var ConferenceUser = new Schema({
     name: String,
@@ -52,5 +56,13 @@ var ConferenceSchema = new Schema({
         ref: 'User'
     }
 });
+
+var SessionMeeting = new Schema({
+    status : Boolean,
+    conference : ConferenceSchema,
+    topic : Number,
+    current_content : Content,
+
+})
 
 mongoose.model('Conference', ConferenceSchema);

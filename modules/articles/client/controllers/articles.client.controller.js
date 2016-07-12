@@ -83,8 +83,8 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
 
         $scope.addSubDetailContent = function (topic, content, index) {
             content.subContents.push({
-                header: "",
-                content: "",
+                header: '',
+                content: '',
                 isEditMode : true
             });
         };
