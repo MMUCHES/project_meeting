@@ -1,5 +1,12 @@
 <section data-ng-controller="HomeController">
-  <div class="row" style="margin-top: 50px;margin-bottom: 50px;">
+  <div class="row">
+
+    <div class="page-header">
+      <ol class="breadcrumb ">
+        <li><a ui-sref="home"  class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
+        <li>หน้าหลัก</li>
+      </ol>
+    </div>
     <div style="margin-top: 30px;" class="col-sm-5" ng-repeat="alert in alerts">
       <div class="row">
         <legend>การเข้าใช้งานระบบ</legend>
