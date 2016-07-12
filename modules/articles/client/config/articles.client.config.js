@@ -10,6 +10,16 @@ angular.module('articles').run(['Menus',
       type: 'dropdown',
       roles: ['user']
     });
+    Menus.addMenuItem('topbar', {
+      title: 'คู่มือการใช้งาน',
+      state: 'articles.manual',
+      roles: ['*']
+    });
+    Menus.addMenuItem('topbar', {
+      title: 'ติดต่อเรา',
+      state: 'articles.about',
+      roles: ['*']
+    });
 
     // Add the dropdown list item
     Menus.addSubMenuItem('topbar', 'articles', {

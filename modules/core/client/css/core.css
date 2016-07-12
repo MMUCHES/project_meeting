@@ -13,14 +13,6 @@ html {
   min-height: 100%;
  }
 
-.navbar-brand {
-    padding: 0px;
-}
-.navbar-brand>img {
-    height: 100%;
-    padding: 7px 15px;
-    width: auto;
-}
 
 .content {
   margin-top: 50px;
@@ -61,8 +53,8 @@ a:hover .header-profile-image {
 }
 
 .navbar {
-  background-color: #009695;
-  border-color: #009695;
+  background-color: #463265;
+  border-color: #463265;
 }
 .navbar .navbar-brand {
   color: #ecf0f1;
@@ -79,46 +71,46 @@ a:hover .header-profile-image {
 }
 .navbar .navbar-nav > li > a:hover,
 .navbar .navbar-nav > li > a:focus {
-  color: #ecdbff;
+  color: #ffffff; /*เม้าชี้แล้วเปลี่ยนสี*/
 }
 .navbar .navbar-nav > li > .dropdown-menu {
-  background-color: #009695;
+  background-color: #463265;
 }
 .navbar .navbar-nav > li > .dropdown-menu > li > a {
   color: #ecf0f1;
 }
 .navbar .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #ecdbff;
-  background-color: #009695;
+  color: #463265; /*drop downเม้าชี้แล้วเปลี่ยนสี*/
+  background-color: #463265;
 }
 .navbar .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #009695;
+  background-color: #463265;
 }
 .navbar .navbar-nav .open .dropdown-menu > .active > a,
 .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
   color: #ecdbff;
-  background-color: #009695;
+  background-color: #463265;
 }
 .navbar .navbar-nav > .active > a,
 .navbar .navbar-nav > .active > a:hover,
 .navbar .navbar-nav > .active > a:focus {
   color: #ecdbff;
-  background-color: #009695;
+  background-color: #463265;
 }
 .navbar .navbar-nav > .open > a,
 .navbar .navbar-nav > .open > a:hover,
 .navbar .navbar-nav > .open > a:focus {
   color: #ecdbff;
-  background-color: #009695;
+  background-color: #463265;
 }
 .navbar .navbar-toggle {
-  border-color: #009695;
+  border-color: #463265;
 }
 .navbar .navbar-toggle:hover,
 .navbar .navbar-toggle:focus {
-  background-color: #009695;
+  background-color: #463265;
 }
 .navbar .navbar-toggle .icon-bar {
   background-color: #ecf0f1;
@@ -146,22 +138,19 @@ a:hover .header-profile-image {
   .navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #ecdbff;
-    background-color: #009695;
+    background-color: #463265;
   }
+}
+hr {
+  background-color: #463265;
+  border-style: inset;
+  border-width: 1px;
 }
 /*bootstrap navebar*/
 .copyright{
   margin-top: 15px;
   padding-bottom: 15px;
-  text-align: center;
-  line-height: 20px;
-  background-color: #009695;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-origin: padding-box;
-  box-sizing: border-box;
-  padding-top: 15px;
-  color: #ffffff;
+  text-align: right;
   position: absolute;
   left: 0;
   bottom: 0;
