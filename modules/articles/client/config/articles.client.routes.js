@@ -74,9 +74,9 @@ angular.module('articles').config(['$stateProvider',
                 url: 'user_manual',
                 templateUrl: 'modules/articles/client/views/user_manual.html'
             })
-            .state('articles.about', {
-                url: 'about',
-                templateUrl: 'modules/articles/client/views/about.html'
+            .state('articles.contact', {
+                url: 'contact',
+                templateUrl: 'modules/articles/client/views/contact.html'
             });
 
 

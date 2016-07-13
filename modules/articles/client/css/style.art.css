@@ -1,9 +1,25 @@
-#head{
-    color: #ff6633;
-    background-color: #f4f4f4;
-    min-width: 100%;
-    background-repeat: repeat-x;
-    padding: 25px;
-    margin: 0 -9999rem;
-    border: 2px solid #ff6633;
+.page-content{
+	margin-top: 35px;
 }
+.table {
+    width: 100%;
+}
+
+    .table td {
+        height: 30px;
+        vertical-align: top;
+    }
+
+    .table .row-title {
+        font-weight: bold;
+        width: 200px;
+    }
+/*#staff {*/
+         /*text-align: center;*/
+     /*}*/
+/*.thumbnail {*/
+    /*margin: 20px;*/
+    /*width: 250px;*/
+    /*display: inline-block;*/
+/*}*/
+
