@@ -12,6 +12,19 @@ html {
   position: relative;
   min-height: 100%;
 }
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 20px;
+  padding-bottom: 15px;
+}
+
 .bg_1{
   background-color: #ad8ae3;
   color: #FFFFFF;
@@ -153,15 +166,4 @@ hr {
   background-color: #463265;
   border-style: inset;
   border-width: 1px;
-}
-/*bootstrap navebar*/
-.copyright{
-  margin-top: 15px;
-  padding-bottom: 15px;
-  text-align: right;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-
 }
