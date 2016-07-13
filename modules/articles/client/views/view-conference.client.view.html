@@ -3,7 +3,7 @@
     <div class="page-header">
         <ol class="breadcrumb ">
             <li><a ui-sref="articles.list" class="btn bg_1"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
-            <li>{{conference.topic}}</li>
+            <li>เพิ่มรายละเอียดการประชุม</li>
         </ol>
     </div>
     <div class="mainbox col-md-12">
@@ -16,23 +16,24 @@
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                 <div class="col-md-12">
                     <div class="row">
-                            <div class="thumbnail  col-sm-12" >
-                                <div class="caption col-sm-9"><span ng-bind="(variable | number: 1) + '%'"
-                                                           class="animated" ng-show="variable"
-                                                           ng-class="{'fadeIn':variable}"></span>
-                                    <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
-                                    <p><span ng-bind="conference.conferenceDate"></span>
-                                        เวลา<span ng-bind="conference.conferenceTime"></span>
-                                        <span ng-bind="conference.conferencePlace"></span><br>
-                                        <small>
-                                            สร้างการประชุมโดย <span ng-bind="conference.user.displayName"></span>
-                                        </small>
-                                    </p>
-                                </div>
-                                <div class="btn-group col-sm-3">
-                                    <button type="button" class="btn bg_1 pull-right dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        เพิ่มรายละเอียด <span class="caret"></span>
-                                    </button>
+                        <div class="thumbnail  col-sm-12">
+                            <div class="caption col-sm-9"><span ng-bind="(variable | number: 1) + '%'"
+                                                                class="animated" ng-show="variable"
+                                                                ng-class="{'fadeIn':variable}"></span>
+                                <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
+                                <p><span ng-bind="conference.conferenceDate"></span>
+                                    เวลา<span ng-bind="conference.conferenceTime"></span>
+                                    <span ng-bind="conference.conferencePlace"></span><br>
+                                    <small>
+                                        สร้างการประชุมโดย <span ng-bind="conference.user.displayName"></span>
+                                    </small>
+                                </p>
+                            </div>
+                            <div class="btn-group col-sm-3">
+                                <button type="button" class="btn bg_1 pull-right dropdown-toggle" data-toggle="dropdown"
+                                        aria-haspopup="true" aria-expanded="false">
+                                    เพิ่มรายละเอียด <span class="caret"></span>
+                                </button>
                                 <ul class="dropdown-menu pull-right">
                                     <li><a ui-sref="conferences.editarticle({conferenceId: conference._id})"
                                            class="glyphicon glyphicon-edit"> แก้ไขการประชุม</a></li>
@@ -48,7 +49,7 @@
                                     <li><a id="myBtn" class="glyphicon glyphicon-trash"> ลบการประชุม</a></li>
                                 </ul>
                             </div>
-                            </div>
+                        </div>
 
                     </div>
                 </div>

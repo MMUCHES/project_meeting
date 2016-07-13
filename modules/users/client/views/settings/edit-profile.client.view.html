@@ -1,52 +1,57 @@
 <section class="row" ng-controller="EditProfileController">
-  <section class="row" ng-controller="EditProfileController">
-  <div  class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">  
-  <div class="panel panel-info" >    
-    <div style="padding-top:30px" class="panel-body" >
-        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div> 
-        <form style="margin-left:20px;margin-right:20px;"name="userForm" ng-submit="updateUserProfile(userForm.$valid)" class="form-horizontal" role="form">
-           <div class="form-group" show-errors>
-          <label for="firstName">ชื่อ</label>
-          <input type="text" id="firstName" name="firstName" class="form-control" ng-model="user.firstName" placeholder="First Name" required>
-          <div ng-messages="userForm.firstName.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">First name is required.</p>
-          </div>
+    <section class="row" ng-controller="EditProfileController">
+        <div class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+            <div class="panel panel-info">
+                <div style="padding-top:30px" class="panel-body">
+                    <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                    <form style="margin-left:20px;margin-right:20px;" name="userForm"
+                          ng-submit="updateUserProfile(userForm.$valid)" class="form-horizontal" role="form">
+                        <div class="form-group" show-errors>
+                            <label for="firstName">ชื่อ</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control"
+                                   ng-model="user.firstName" placeholder="First Name" required>
+                            <div ng-messages="userForm.firstName.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">First name is required.</p>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <label for="lastName">นามสกุล</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control"
+                                   ng-model="user.lastName" placeholder="Last Name" required>
+                            <div ng-messages="userForm.lastName.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Last name is required.</p>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <label for="email">อีเมล</label>
+                            <input type="email" id="email" name="email" class="form-control" ng-model="user.email"
+                                   placeholder="Email" lowercase required>
+                            <div ng-messages="userForm.email.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Email address is required.</p>
+                                <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+                            </div>
+                        </div>
+                        <div class="form-group" show-errors>
+                            <label for="username">ชื่อผู้ใช้งาน</label>
+                            <input type="text" id="username" name="username" class="form-control"
+                                   ng-model="user.username" placeholder="Username" lowercase required>
+                            <div ng-messages="userForm.username.$error" role="alert">
+                                <p class="help-block error-text" ng-message="required">Username is required.</p>
+                            </div>
+                        </div>
+                        <div class="text-center form-group">
+                            <button type="submit" class="btn bg_1">บันทึกข้อมูล</button>
+                        </div>
+                        <div ng-show="success" class="text-center text-success">
+                            <strong>Profile Saved Successfully</strong>
+                        </div>
+                        <div ng-show="error" class="text-center text-danger">
+                            <strong ng-bind="error"></strong>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group" show-errors>
-          <label for="lastName">นามสกุล</label>
-          <input type="text" id="lastName" name="lastName" class="form-control" ng-model="user.lastName" placeholder="Last Name" required>
-          <div ng-messages="userForm.lastName.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Last name is required.</p>
-          </div>
-        </div>
-        <div class="form-group" show-errors>
-          <label for="email">อีเมล</label>
-          <input type="email" id="email" name="email" class="form-control" ng-model="user.email" placeholder="Email" lowercase required>
-          <div ng-messages="userForm.email.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Email address is required.</p>
-            <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
-          </div>
-        </div>
-        <div class="form-group" show-errors>
-          <label for="username">ชื่อผู้ใช้งาน</label>
-          <input type="text" id="username" name="username" class="form-control" ng-model="user.username" placeholder="Username" lowercase required>
-          <div ng-messages="userForm.username.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Username is required.</p>
-          </div>
-        </div>
-        <div class="text-center form-group">
-          <button type="submit" class="btn btn-primary">บันทึกข้อมูล</button>
-        </div>
-        <div ng-show="success" class="text-center text-success">
-          <strong>Profile Saved Successfully</strong>
-        </div>
-        <div ng-show="error" class="text-center text-danger">
-          <strong ng-bind="error"></strong>
-        </div>
-                  </form>     
-                  </div>                     
-                  </div>  
-              </div>
-</section>
+    </section>
 
 </section>

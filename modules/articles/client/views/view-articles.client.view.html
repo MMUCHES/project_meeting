@@ -1,74 +1,74 @@
 <section ng-controller="ConferenceViewController">
-  <div class="page-header">
-    <div class="row">
-      <ol class="breadcrumb ">
-        <li><a ui-sref="home"  class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
-        <li>ต้นแบบการประชุม</li>
-      </ol>
+    <div class="page-header">
+        <div class="row">
+            <ol class="breadcrumb ">
+                <li><a ui-sref="home" class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
+                <li>ต้นแบบการประชุม</li>
+            </ol>
+        </div>
     </div>
-  </div>  
-  <div class="mainbox col-md-12">
+    <div class="mainbox col-md-12">
         <div class="panel panel-info">
             <div class="panel-heading">
                 <div class="panel-title">{{conference.topic}}</div>
             </div>
-           <div style="padding-top:30px" class="panel-body" >
-       
-           <div class="text-center">
-           <p>{{conference.topic}}</p>
-           <p>{{conference.number}}</p>
-           <p>{{conference.conferenceDate}}</p>
-           <p>{{conference.conferenceTime}}</p>
-           <p>{{conference.conferencePlace}}</p>
-           <p>*****************************************</p>
-           </div>
-           <p><strong>รายชื่อผู้เข้าร่วมประชุม</strong></p>
-           <div ng-repeat="user in conference.conference_users">
-           <div class="col-sm-12">
-           <div class="col-sm-6">
-            <p>{{user.name}}</p> 
-           </div>
-           <div class="col-sm-4">
-            <p>{{user.position}}</p>
-           </div>
-           </div>
-           </div>
-               <div>
-                   <p><strong>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</strong></p>
-                   <div ng-repeat="content in conference.topic_one.contents">
-                       <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
-                       <p style="margin-left: 20px;">{{content.content}}</p>
-                   </div>
-               </div>
-               <div>
-                   <p><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>
-                   <div ng-repeat="content in conference.topic_two.contents">
-                       <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
-                       <p style="margin-left: 20px;">{{content.content}}</p>
-                   </div>
-               </div>
-               <div>
-                   <p><strong>วาระที่ 3 เรื่องสืบเนื่อง</strong></p>
-                   <div ng-repeat="content in conference.topic_three.contents">
-                       <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
-                       <p style="margin-left: 20px;">{{content.content}}</p>
-                   </div>
-               </div>
-               <div>
-                   <p><strong>วาระที่ 1 เรื่องเสนอเพื่อพิจารณา</strong></p>
-                   <div ng-repeat="content in conference.topic_four.contents">
-                       <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
-                       <p style="margin-left: 20px;">{{content.content}}</p>
-                   </div>
-               </div>
-               <div>
-                   <p><strong>วาระที่ 5 เรื่องอื่นๆ</strong></p>
-                   <div ng-repeat="content in conference.topic_five.contents">
-                       <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
-                       <p style="margin-left: 20px;">{{content.content}}</p>
-                   </div>
-               </div>
-          </div>
-          </div>
-          </div>
+            <div style="padding-top:30px" class="panel-body">
+
+                <div class="text-center">
+                    <p>{{conference.topic}}</p>
+                    <p>{{conference.number}}</p>
+                    <p>{{conference.conferenceDate}}</p>
+                    <p>{{conference.conferenceTime}}</p>
+                    <p>{{conference.conferencePlace}}</p>
+                    <p>*****************************************</p>
+                </div>
+                <p><strong>รายชื่อผู้เข้าร่วมประชุม</strong></p>
+                <div ng-repeat="user in conference.conference_users">
+                    <div class="col-sm-12">
+                        <div class="col-sm-6">
+                            <p>{{user.name}}</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <p>{{user.position}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <p><strong>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</strong></p>
+                    <div ng-repeat="content in conference.topic_one.contents">
+                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 20px;">{{content.content}}</p>
+                    </div>
+                </div>
+                <div>
+                    <p><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>
+                    <div ng-repeat="content in conference.topic_two.contents">
+                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 20px;">{{content.content}}</p>
+                    </div>
+                </div>
+                <div>
+                    <p><strong>วาระที่ 3 เรื่องสืบเนื่อง</strong></p>
+                    <div ng-repeat="content in conference.topic_three.contents">
+                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 20px;">{{content.content}}</p>
+                    </div>
+                </div>
+                <div>
+                    <p><strong>วาระที่ 1 เรื่องเสนอเพื่อพิจารณา</strong></p>
+                    <div ng-repeat="content in conference.topic_four.contents">
+                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 20px;">{{content.content}}</p>
+                    </div>
+                </div>
+                <div>
+                    <p><strong>วาระที่ 5 เรื่องอื่นๆ</strong></p>
+                    <div ng-repeat="content in conference.topic_five.contents">
+                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 20px;">{{content.content}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>

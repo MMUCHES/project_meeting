@@ -14,12 +14,22 @@
         font-weight: bold;
         width: 200px;
     }
-/*#staff {*/
-         /*text-align: center;*/
-     /*}*/
-/*.thumbnail {*/
-    /*margin: 20px;*/
-    /*width: 250px;*/
-    /*display: inline-block;*/
-/*}*/
+.line-height{
+    line-height: 1.7em;
+}
 
+#staff {
+    text-align: center;
+}
+
+#staff .thumbnail {
+    margin: 20px;
+    width:250px;
+    display: inline-block;
+}
+.col-center-block {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

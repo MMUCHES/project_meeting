@@ -16,7 +16,7 @@ angular.module('articles').run(['Menus',
       roles: ['*']
     });
     Menus.addMenuItem('topbar', {
-      title: 'ติดต่อสอบถาม',
+      title: 'เกี่ยวกับเรา',
       state: 'articles.contact',
       roles: ['*']
     });

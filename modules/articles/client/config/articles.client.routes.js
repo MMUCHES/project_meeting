@@ -51,7 +51,7 @@ angular.module('articles').config(['$stateProvider',
                 templateUrl: 'modules/articles/client/views/position.conference.client.view.html'
             })
             .state('conferences.editarticle', {
-                url: '/:conferenceId/editarticle',
+                url: '/:conferenceId/prototype_article',
                 templateUrl: 'modules/articles/client/views/edit-article.client.view.html'
             })
             .state('articles', {
@@ -60,23 +60,23 @@ angular.module('articles').config(['$stateProvider',
                 template: '<ui-view/>'
             })
             .state('articles.list', {
-                url: 'list',
+                url: '/list_article',
                 templateUrl: 'modules/articles/client/views/list-articles.client.view.html'
             })
             .state('articles.create', {
-                url: '/create',
+                url: '/create_article',
                 templateUrl: 'modules/articles/client/views/create-article.client.view.html',
                 data: {
                     roles: ['user', 'admin']
                 }
             })
             .state('articles.manual', {
-                url: 'user_manual',
+                url: '/user_manual',
                 templateUrl: 'modules/articles/client/views/user_manual.html'
             })
             .state('articles.contact', {
-                url: 'contact',
-                templateUrl: 'modules/articles/client/views/contact.html'
+                url: '/contact',
+                templateUrl: 'modules/articles/client/views/contact.view.html'
             });
 
 
