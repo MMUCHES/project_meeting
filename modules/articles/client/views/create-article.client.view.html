@@ -36,20 +36,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="title">วันที่ประชุม *</label>
                         <div class="col-sm-4">
-                            <div class='input-group date' id='datetimepicker1'>
                                 <input name="date_m" type="text" ng-model="conference.conferenceDate" id="date_m"
                                        class="form-control">
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-calendar"></span>
-                </span>
-                                <!--             <script type="text/javascript">
-                                     $(function () {
-                                         $('#datetimepicker1').datetimepicker({
-                                           format : 'DD/MM/YYYY'
-                                         });
-                                     });
-                                 </script> -->
-                            </div>
                         </div>
                     </div>
 
@@ -57,21 +45,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="title">เวลาประชุม *</label>
                         <div class="col-sm-4">
-                            <div class='input-group date' id='datetimepicker3'>
                                 <input name="time_m" type="text" ng-model="conference.conferenceTime" id="time_m"
                                        class="form-control">
-                <span class="input-group-addon">
-                  <span class="glyphicon glyphicon-time"></span>
-                </span>
-                                <!--               <script type="text/javascript">
-                                          $(function () {
-                                              $('#datetimepicker3').datetimepicker({
-                                                  format: 'LT',
-                                                  format: 'HH:mm น.'
-                                              });
-                                          });
-                                      </script> -->
-                            </div>
                         </div>
                     </div>
 
@@ -95,12 +70,6 @@
                     </div>
                 </form>
             </div>
-            <!--tinymceOptions-->
-            <!--       <div class="form-group">
-                    <label for="topics">หัวข้อการประชุม</label>
-                    <textarea ui-tinymce="tinymceOptions" name="topics" ng-model="topics" class="form-control"      cols="30" rows="12" placeholder="Content"></textarea>
-                  </div>  -->
-            <!--tinymceOptions-->
         </div>
     </div>
     <style type="text/css">

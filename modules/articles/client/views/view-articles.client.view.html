@@ -38,6 +38,10 @@
                     <div ng-repeat="content in conference.topic_one.contents">
                         <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
+                        <div ng-repeat="subContent in content.subContents">
+                        <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                        <p style="margin-left: 40px;">{{subContent.content}}</p>
+                    </div>
                     </div>
                 </div>
                 <div>
@@ -45,6 +49,10 @@
                     <div ng-repeat="content in conference.topic_two.contents">
                         <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
+                        <div ng-repeat="subContent in content.subContents">
+                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -52,13 +60,21 @@
                     <div ng-repeat="content in conference.topic_three.contents">
                         <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
+                        <div ng-repeat="subContent in content.subContents">
+                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                        </div>
                     </div>
                 </div>
                 <div>
-                    <p><strong>วาระที่ 1 เรื่องเสนอเพื่อพิจารณา</strong></p>
+                    <p><strong>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</strong></p>
                     <div ng-repeat="content in conference.topic_four.contents">
                         <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
+                        <div ng-repeat="subContent in content.subContents">
+                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -66,6 +82,10 @@
                     <div ng-repeat="content in conference.topic_five.contents">
                         <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
+                        <div ng-repeat="subContent in content.subContents">
+                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

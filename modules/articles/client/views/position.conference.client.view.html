@@ -39,8 +39,15 @@
                                            placeholder="ตำแหน่งในที่ประชุม"/>
                                 </td>
                                 <td>
-                                    <button class="btn btn-block btn-danger" type="button"
-                                            ng-click="removeSubUser(conference.conference_users,user,$index)">ลบ
+                                    <button ng-show="user.isEditMode" class="btn btn-block btn-danger" type="button"
+                                            ng-click="removeSubUser(conference.conference_users,user,$index)">ตกลง
+                                    </button>
+                                    <button ng-show="user.isEditMode" class="btn btn-block btn-warning" type="button"
+                                            ng-click="toggleDeleteposition(conference.conference_users,user,$index)">
+                                        ยกเลิก
+                                    </button>
+                                    <button ng-show="!user.isEditMode" class="btn btn-block btn-danger" type="button"
+                                            ng-click="toggleDeleteposition(conference.conference_users,user,$index)">ลบ
                                     </button>
                                 </td>
                             </tr>
@@ -52,7 +59,6 @@
                 </form>
             </div>
         </div>
-
 
     </div>
 </section>

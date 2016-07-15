@@ -42,7 +42,7 @@
                             <h4 class="media-heading" ng-show="!content.isEditMode">
                                 {{content.header}}
                             </h4>
-                            <div class="media-heading "  ng-show="content.isEditMode">
+                            <div class="media-heading " ng-show="content.isEditMode">
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
                                     <div class="col-sm-10">
@@ -88,7 +88,7 @@
                                         {{subContent.header}}
                                     </h4>
                                     <div class="media-heading" ng-show="subContent.isEditMode">
-                                        <div class="form-group" >
+                                        <div class="form-group">
                                             <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
                                             <div class="col-sm-10">
                                                 <input class="form-control" type="text" ng-model="subContent.header"/>
@@ -117,8 +117,8 @@
                                         บันทึก
                                     </button>
                                     <button class="btn btn-danger btn-block" type="button"
-                                                     ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
-                                </button>
+                                            ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
+                                    </button>
                                 </div>
                             </div>
                         </div>
