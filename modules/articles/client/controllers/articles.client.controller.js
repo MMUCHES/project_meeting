@@ -105,6 +105,15 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
                 subContent.isEditMode = true;
             }
         };
+        $scope.toggleDeleteposition = function (topic, user, index) {
+            if (user.isEditMode) {
+                user.isEditMode = !user.isEditMode;
+                $scope.removeSubUser();
+            } else {
+                user.isEditMode = true;
+
+            }
+        };
 
 
         $scope.newUser = {};
