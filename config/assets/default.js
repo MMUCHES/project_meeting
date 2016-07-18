@@ -5,7 +5,8 @@ module.exports = {
     lib: {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css'
+        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        'public/lib/angular-material/angular-material.css'
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -15,6 +16,7 @@ module.exports = {
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+        'public/lib/angular-',
         'public/lib/angular-file-upload/angular-file-upload.js',
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/jquery.sortable.js',
@@ -25,9 +27,10 @@ module.exports = {
         'public/lib/ng-file-upload/ng-file-upload-shim.min.js',
         'public/lib/ng-file-upload/ng-file-upload.min.js',
         'public/lib/moment/moment.js',
+        'public/lib/angular-material/angular-material.js',
         'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        'public/lib/moment/moment.js',
         'public/lib/reveal.js'
-
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

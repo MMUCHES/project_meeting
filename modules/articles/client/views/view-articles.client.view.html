@@ -1,9 +1,9 @@
 <section ng-controller="ConferenceViewController">
     <div class="page-header">
         <div class="row">
-            <ol class="breadcrumb ">
-                <li><a ui-sref="home" class="btn btn-info"><i class="glyphicon glyphicon-home"></i></a></li>
-                <li>ต้นแบบการประชุม</li>
+            <ol class="breadcrumb breadcrumb-arrow">
+                <li><a href="http://www.citcoms.up.ac.th/citcoms_web/citcoms_web/news">ข่าวประชาสัมพันธ์</a></li>
+                <li class="active"><span>ศูนย์บริการเทคโนโลยีสารสนเทศและการสื่อสาร จัดโครงการพัฒนาบุคลากรด้านเทคโนโลยีสารสนเทศ หลักสูตร Advanced Microsoft Word 2013</span></li>
             </ol>
         </div>
     </div>
@@ -36,7 +36,7 @@
                 <div>
                     <p><strong>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</strong></p>
                     <div ng-repeat="content in conference.topic_one.contents">
-                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 10px;"><strong>1.{{$index+1}} {{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
                         <div ng-repeat="subContent in content.subContents">
                         <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
