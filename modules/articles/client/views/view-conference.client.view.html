@@ -1,10 +1,10 @@
 <section ng-controller="ConferenceViewController">
 
     <div class="page-header">
-        <ol class="breadcrumb ">
-            <li><a ui-sref="articles.list" class="btn bg_1"><i class="glyphicon glyphicon-arrow-left"></i></a></li>
-            <li>เพิ่มรายละเอียดการประชุม</li>
-        </ol>
+        <ol class="breadcrumb breadcrumb-arrow">
+        <li><a ui-sref="conferences.view({conferenceId: conference._id})">การประชุมทั้งหมด</a></li>
+        <li class="active"><span>เพิ่มรายละเอียดการประชุม</span></li>
+    </ol>
     </div>
     <div class="mainbox col-md-12">
         <div class="panel panel-info">

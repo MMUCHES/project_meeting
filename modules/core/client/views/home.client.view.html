@@ -1,12 +1,6 @@
 <section data-ng-controller="HomeController">
-    <div class="row home_side">
-        <div class="page-header">
-            <ol class="breadcrumb ">
-                <li><a ui-sref="home" class="btn bg_1"><i class="glyphicon glyphicon-home"></i></a></li>
-                <li>หน้าหลัก</li>
-            </ol>
-        </div>
-        <div style="margin-top: 30px;" class="col-sm-5" ng-repeat="alert in alerts">
+    <div class="row home_side" style="margin-top: 70px;">
+        <div class="col-sm-5" ng-repeat="alert in alerts">
             <div class="row">
                 <legend>การเข้าใช้งานระบบ</legend>
                 <br>
@@ -25,7 +19,7 @@
             </div>
         </div>
         <div ng-controller="ArticlesController" ng-init="find()" class="col-sm-7 ">
-            <div style="margin-top:30px;" class="mainbox col-md-12 ">
+            <div  class="mainbox col-md-12 ">
 
 
                 <div class="panel panel-info">
@@ -37,7 +31,7 @@
                     <div style="padding-top:30px" class="panel-body menu scrollable-menu" role="menu">
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                         <div class="row">
-                            <div class="col-sm-6 col-md-12" ng-controller="ConferenceListController">
+                            <div class="col-sm-12 col-md-12" ng-controller="ConferenceListController">
                                 <div ng-repeat="conference in conferences" class="thumbnail">
                                     <div class="caption">
                 <span ng-bind="(variable | number: 1) + '%'"

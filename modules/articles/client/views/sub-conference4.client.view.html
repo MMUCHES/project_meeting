@@ -1,14 +1,11 @@
 <section ng-controller="ConferenceViewController">
 
     <div class="page-header">
-        <ol class="breadcrumb ">
-            <li><a ui-sref="conferences.subconference({conferenceId: conference._id})" class="btn btn-info"><i class="glyphicon glyphicon-arrow-left
-"></i></a></li>
-            <li>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</li>
+        <ol class="breadcrumb breadcrumb-arrow">
+            <li><a ui-sref="conferences.view({conferenceId: conference._id})">แก้ไขระเบียบวาระการประชุม</a></li>
+            <li class="active"><span>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</span></li>
         </ol>
     </div>
-
-
     <div class="modal-body">
         <div class="thumbnail">
             <div class="form-group clearfix">
