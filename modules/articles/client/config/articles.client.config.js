@@ -10,11 +10,7 @@ angular.module('articles').run(['Menus',
       type: 'dropdown',
       roles: ['user']
     });
-    Menus.addMenuItem('topbar', {
-      title: 'คู่มือการใช้งาน',
-      state: 'articles.manual',
-      roles: ['*']
-    });
+
     Menus.addMenuItem('topbar', {
       title: 'เกี่ยวกับเรา',
       state: 'articles.contact',

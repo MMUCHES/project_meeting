@@ -196,3 +196,11 @@
 .breadcrumb-arrow li span {
     color: #434a54;
 }
+
+.alert {
+    content: '';
+    display: inline;
+    height: 10px;
+    vertical-align: middle;
+    margin-right: -5px;
+}

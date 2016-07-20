@@ -18,9 +18,7 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
 }
-a {
-    text-decoration: none !important;
-}
+
 .footer {
     position: absolute;
     bottom: 0;
@@ -212,3 +210,4 @@ hr {
     border-style: inset;
     border-width: 1px;
 }
+

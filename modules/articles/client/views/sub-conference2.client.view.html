@@ -2,7 +2,7 @@
 
     <div class="page-header">
         <ol class="breadcrumb breadcrumb-arrow">
-            <li><a ui-sref="conferences.view({conferenceId: conference._id})">แก้ไขระเบียบวาระการประชุม</a></li>
+            <li><a ui-sref="conferences.subconference({conferenceId: conference._id})">แก้ไขระเบียบวาระการประชุม</a></li>
             <li class="active"><span>วาระที่ 2 เรื่องรับรองรายงานการประชุม</span></li>
         </ol>
     </div>
@@ -12,10 +12,10 @@
         <div class="thumbnail">
             <div class="form-group clearfix">
                 <div style="margin-top: 5px;" class="col-sm-12">
-                    <button class="btn btn-success  glyphicon glyphicon-download-alt" type="button"
+                    <button class="btn bg_1 glyphicon glyphicon-download-alt" type="button"
                             ng-click="addSubContent(conference.topic_two,newContent)"> เพิ่ม
                     </button>
-                    <button class="btn btn-warning  glyphicon glyphicon-saved" ng-click="update()"
+                    <button class="btn bg_1  glyphicon glyphicon-saved" ng-click="update()"
                             type="button"> บันทึกการแก้ไข
                     </button>
 

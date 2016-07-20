@@ -15,6 +15,20 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
     }
 ]);
 
+angular.module('articles').controller('ConferenceSessionController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
+        $scope.authentication = Authentication;
+
+        $scope.newSession = {};
+        $scope.addSessionContent = function (topic, content) {
+            topic.contents.push('status: true');
+        };
+
+        $scope.addSessionContent();
+
+    }
+]);
+
 angular.module('articles').controller('ConferenceViewController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
@@ -24,7 +38,6 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
                 chapter0s: 'active'
             }
         ];
-
         // Remove existing Article
         $scope.remove = function (conference) {
             if (conference) {
@@ -37,12 +50,10 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
                 }
             } else {
                 $scope.conference.$remove(function () {
-                    $location.path('articleslist');
+                    $location.path('/articles/list_article');
                 });
             }
         };
-
-
         $scope.conference = {};
         function init() {
             $scope.conferences = Conferences.get({
@@ -88,7 +99,6 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
                 isEditMode: true
             });
         };
-
         $scope.toggleEditContent = function (topic, content, index) {
             if (content.isEditMode) {
                 content.isEditMode = !content.isEditMode;
@@ -114,7 +124,6 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
 
             }
         };
-
 
         $scope.newUser = {};
         $scope.addSubUser = function (users, user) {
