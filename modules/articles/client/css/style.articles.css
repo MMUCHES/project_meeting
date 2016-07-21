@@ -1,19 +1,19 @@
 .page-content{
 	margin-top: 35px;
 }
-.table {
+.table-info {
     width: 100%;
 }
 
-    .table td {
-        height: 30px;
-        vertical-align: top;
-    }
+.table-info td {
+    height: 30px;
+    vertical-align: top;
+}
 
-    .table .row-title {
-        font-weight: bold;
-        width: 200px;
-    }
+.table-info .row-title {
+    font-weight: bold;
+    width: 120px;
+}
 .line-height{
     line-height: 1.7em;
 }

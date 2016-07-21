@@ -47,7 +47,7 @@
                 <div>
                     <p><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>
                     <div ng-repeat="content in conference.topic_two.contents">
-                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 10px;"><strong>2.{{$index+1}} {{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
                         <div ng-repeat="subContent in content.subContents">
                             <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
@@ -58,7 +58,7 @@
                 <div>
                     <p><strong>วาระที่ 3 เรื่องสืบเนื่อง</strong></p>
                     <div ng-repeat="content in conference.topic_three.contents">
-                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 10px;"><strong>3.{{$index+1}} {{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
                         <div ng-repeat="subContent in content.subContents">
                             <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
@@ -69,7 +69,7 @@
                 <div>
                     <p><strong>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</strong></p>
                     <div ng-repeat="content in conference.topic_four.contents">
-                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 10px;"><strong>4.{{$index+1}} {{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
                         <div ng-repeat="subContent in content.subContents">
                             <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
@@ -80,7 +80,7 @@
                 <div>
                     <p><strong>วาระที่ 5 เรื่องอื่นๆ</strong></p>
                     <div ng-repeat="content in conference.topic_five.contents">
-                        <p style="margin-left: 10px;"><strong>{{content.header}}</strong></p>
+                        <p style="margin-left: 10px;"><strong>5.{{$index+1}} {{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
                         <div ng-repeat="subContent in content.subContents">
                             <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>

@@ -1,82 +1,82 @@
 <section ng-controller="ConferenceCreateController">
     <div class="page-content">
         <div class="container page-content">
-            <div class="row">
-                <div class="col-sm-8 col-md-8 col-center-block">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title text-center">ข้อมูลสำหรับการติดต่อ</h3>
-                        </div>
-                        <div class="panel-body table-responsive">
-                            <table class="table">
-                                <tbody>
-                                <tr>
-                                    <td class="row-title ">ผู้ดำเนินโครงงาน</td>
-                                    <td>
-                                        <ul>
-                                            <li>นายเสรี ยอยยิ้ม</li>
-                                            <li>นายจตุพร คงสุข</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="row-title">ที่ปรึกษาโครงงาน</td>
-                                    <td>
-                                        <ul>
-                                            <li>อาจารย์เชาวน์ ปอแก้ว</li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="row-title">สถานที่ติดต่อ</td>
-                                    <td>
-                                        <ul>
-                                            <li><strong>
-                                                คณะเทคโนโลยีสารสนเทศและการสื่อสาร มหาวิทยาลัยพะเยา</strong> ถนนพหลโยธิน
-                                                ต.แม่กา อ.เมือง จ.พะเยา 56000 โทร. 054-466-666 ต่อ 2319, 2330
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
+
+            <div class="col-sm-5 col-md-5">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">ข้อมูลสำหรับการติดต่อ</h3>
                     </div>
+                    <div class="panel-body">
+                        <table class="table-info">
+                            <tbody>
+                            <tr>
+                                <td class="row-title ">ผู้ดำเนินโครงงาน</td>
+                                <td>
+                                    <ul>
+                                        <li>นายเสรี ยอยยิ้ม</li>
+                                        <li>นายจตุพร คงสุข</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="row-title">ที่ปรึกษาโครงงาน</td>
+                                <td>
+                                    <ul>
+                                        <li>อาจารย์เชาวน์ ปอแก้ว</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="row-title">สถานที่ติดต่อ</td>
+                                <td>
+                                    <ul>
+                                        <li><strong>
+                                            คณะเทคโนโลยีสารสนเทศและการสื่อสาร มหาวิทยาลัยพะเยา</strong> ถนนพหลโยธิน
+                                            ต.แม่กา อ.เมือง จ.พะเยา 56000 โทร. 054-466-666 ต่อ 2319, 2330
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-8 col-md-8 col-center-block">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <h3 class="panel-title text-center">ข้อมูลผู้จัดทำโครงงาน</h3>
+
+
+            <div class="col-sm-7 col-md-7 ">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title text-center">ข้อมูลผู้จัดทำโครงงาน</h3>
+                    </div>
+                    <div id="staff" class="panel-body">
+                        <div class="thumbnail">
+                            <img class="img-circle" ng-src="/modules/articles/client/img/s.y.jpg"
+                                 style="width:100px;height:100px;">
+                            <div class="caption text-center">
+                                นายเสรี ยอยยิ้ม
+                                <p>ผู้ดำเนินโครงงาน<br>
+                                    E-mail: seree.wm@gmail.com<br></p>
+                            </div>
                         </div>
-                        <div id="staff" class="panel-body">
-                            <div class="thumbnail">
-                                <img class="img-circle" ng-src="/modules/articles/client/img/s.y.jpg"
-                                     style="width:100px;height:100px;">
-                                <div class="caption text-center">
-                                    นายเสรี ยอยยิ้ม
-                                    <p>ผู้ดำเนินโครงงาน<br>
-                                        E-mail: seree.wm@gmail.com<br></p>
-                                </div>
+                        <div class="thumbnail ">
+                            <img class="img-circle" ng-src="/modules/articles/client/img/j.p.jpg"
+                                 style="width:100px;height:100px;">
+                            <div class="caption text-center">
+                                นางสาวจตุพร คงสุข
+                                <p>ผู้ดำเนินโครงงาน<br>
+                                    E-mail: jatuporn.ko@gmail.com<br></p>
                             </div>
-                            <div class="thumbnail ">
-                                <img class="img-circle" ng-src="/modules/articles/client/img/j.p.jpg"
-                                     style="width:100px;height:100px;">
-                                <div class="caption text-center">
-                                    นางสาวจตุพร คงสุข
-                                    <p>ผู้ดำเนินโครงงาน<br>
-                                        E-mail: jatuporn.ko@gmail.com<br></p>
-                                </div>
-                            </div>
-                            <div class="thumbnail ">
-                                <img class="img-circle" ng-src="/modules/articles/client/img/c.p.jpg"
-                                     style="width:100px;height:100px;">
-                                <div class="caption text-center">
-                                    อาจารย์เชาวน์ ปอแก้ว
-                                    <p>ที่ปรึกษาโครงงาน<br>
-                                        E-mail: email@email.com<br></p>
-                                </div>
+                        </div>
+                        <div class="thumbnail ">
+                            <img class="img-circle" ng-src="/modules/articles/client/img/c.p.jpg"
+                                 style="width:100px;height:100px;">
+                            <div class="caption text-center">
+                                อาจารย์เชาวน์ ปอแก้ว
+                                <p>ที่ปรึกษาโครงงาน<br>
+                                    E-mail: email@email.com<br></p>
                             </div>
                         </div>
                     </div>
@@ -84,5 +84,6 @@
             </div>
         </div>
     </div>
+
     </div>
 </section>
