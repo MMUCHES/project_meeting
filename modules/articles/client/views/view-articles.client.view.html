@@ -9,10 +9,7 @@
     </div>
     <div class="mainbox col-md-12">
         <div class="panel panel-info">
-            <div class="panel-heading">
-                <div class="panel-title">{{conference.topic}}</div>
-            </div>
-            <div style="padding-top:30px" class="panel-body">
+            <div style="padding-top:30px" class="panel-body box">
 
                 <div class="text-center">
                     <p>{{conference.topic}}</p>
@@ -39,9 +36,9 @@
                         <p style="margin-left: 10px;"><strong>1.{{$index+1}} {{content.header}}</strong></p>
                         <p style="margin-left: 20px;">{{content.content}}</p>
                         <div ng-repeat="subContent in content.subContents">
-                        <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
-                        <p style="margin-left: 40px;">{{subContent.content}}</p>
-                    </div>
+                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                        </div>
                     </div>
                 </div>
                 <div>
@@ -89,6 +86,8 @@
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
+    
 </section>

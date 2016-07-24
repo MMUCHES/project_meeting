@@ -6,6 +6,7 @@
 var path = require('path'),
     mongoose = require('mongoose'),
     Conference = mongoose.model('Conference'),
+    SessionConference = mongoose.model('SessionConference'),
     errorHandler = require(path.resolve('./modules/core/server/controllers/errors.server.controller'));
 
 
@@ -35,7 +36,6 @@ exports.conferenceList = function (req, res) {
         }
     });
 };
-
 
 exports.conferenceRead = function (req, res) {
     res.json(req.conference);
@@ -110,3 +110,42 @@ exports.delete = function (req, res) {
     });
 };
 
+
+// create session
+exports.createSessionConference = function (req,res){
+
+}
+// update session
+exports.updateSessionConference = function (req,res){
+
+}
+// read session
+exports.readSessionConference = function (req,res){
+
+}
+// delete session
+exports.deleteSessionConference = function (req,res){
+
+}
+
+// middleware
+exports.sessionConferenceByID = function (req, res, next, id) {
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(400).send({
+            message: 'Session Conference is invalid'
+        });
+    }
+
+    SessionConference.findById(id).populate('user', 'displayName').exec(function (err, sessionConference) {
+        if (err) {
+            return next(err);
+        } else if (!sessionConference) {
+            return res.status(404).send({
+                message: 'No sessionConference with that identifier has been found'
+            });
+        }
+        req.sessionConference= sessionConference;
+        next();
+    });
+};

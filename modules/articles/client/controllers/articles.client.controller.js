@@ -1,5 +1,6 @@
 'use strict';
 
+//noinspection JSAnnotator
 angular.module('articles').controller('ConferenceCreateController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
@@ -15,20 +16,22 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
     }
 ]);
 
-angular.module('articles').controller('ConferenceSessionController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
+//noinspection JSAnnotator
+angular.module('articles').controller('ConferenceSessionController', ['$scope', '$sce', '$stateParams', '$location','SessionConference', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    function ($scope, $sce, $stateParams, $location, Authentication, Conferences,Session_meeting, Upload, $timeout) {
         $scope.authentication = Authentication;
 
-        $scope.newSession = {};
-        $scope.addSessionContent = function (topic, content) {
-            topic.contents.push('status: true');
+        $scope.session_meeting = new Session_meeting({});
+        $scope.create = function () {
+            $scope.session_meeting.$save(function (response) {
+                $location.path('conferences.realtimearticle');
+            });
         };
-
-        $scope.addSessionContent();
-
     }
 ]);
 
+
+//noinspection JSAnnotator
 angular.module('articles').controller('ConferenceViewController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
@@ -139,6 +142,7 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
 ]);
 
 
+//noinspection JSAnnotator
 angular.module('articles').controller('ConferenceListController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
@@ -154,6 +158,7 @@ angular.module('articles').controller('ConferenceListController', ['$scope', '$s
     }
 ]);
 // Articles controller
+//noinspection JSAnnotator
 angular.module('articles').controller('ArticlesController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Articles', 'Upload', '$timeout',
     function ($scope, $sce, $stateParams, $location, Authentication, Articles, Upload, $timeout) {
         $scope.authentication = Authentication;

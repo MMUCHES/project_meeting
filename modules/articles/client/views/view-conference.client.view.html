@@ -2,9 +2,9 @@
 
     <div class="page-header">
         <ol class="breadcrumb breadcrumb-arrow">
-        <li><a ui-sref="articles.list">การประชุมทั้งหมด</a></li>
-        <li class="active"><span>เพิ่มรายละเอียดการประชุม</span></li>
-    </ol>
+            <li><a ui-sref="articles.list">การประชุมทั้งหมด</a></li>
+            <li class="active"><span>เพิ่มรายละเอียดการประชุม</span></li>
+        </ol>
     </div>
     <div class="mainbox col-md-12">
         <div class="panel panel-info">
@@ -41,10 +41,12 @@
                                            class="glyphicon glyphicon-edit"> แก้ไขวาระการประชุม</a></li>
                                     <li><a ui-sref="conferences.positionconference({conferenceId: conference._id})"
                                            class="glyphicon glyphicon-list-alt"> รายชื่อผู้เข้าร่วมประชุม</a></li>
-                                    <li><a ui-sref="conferences.realtimearticle({conferenceId: conference._id})"
-                                           class="glyphicon glyphicon-eye-open"> เปิดการประชุม</a></li>
+
                                     <li><a ui-sref="conferences.viewarticles({conferenceId: conference._id})"
                                            class="glyphicon glyphicon-fullscreen"> ดูต้นแบบการประชุม</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a ui-sref="conferences.realtimearticle({conferenceId: conference._id})"
+                                           class="glyphicon glyphicon-eye-open"> เปิดการประชุม</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a id="myBtn" class="glyphicon glyphicon-trash"> ลบการประชุม</a></li>
                                 </ul>
@@ -53,7 +55,6 @@
 
                     </div>
                 </div>
-
                 <!-- Modal -->
                 <div class="modal fade" id="myModal" role="dialog">
                     <div class="modal-dialog modal-sm">

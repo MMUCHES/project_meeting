@@ -41,13 +41,16 @@ var ConferenceSchema = new Schema({
     topic_two: {
         title: String,
         contents: [Content]
-    }, topic_three: {
+    },
+    topic_three: {
         title: String,
         contents: [Content]
-    }, topic_four: {
+    },
+    topic_four: {
         title: String,
         contents: [Content]
-    }, topic_five: {
+    },
+    topic_five: {
         title: String,
         contents: [Content]
     },
@@ -57,7 +60,7 @@ var ConferenceSchema = new Schema({
     }
 });
 
-var SessionMeeting = new Schema({
+var SessionConference = new Schema({
     status : Boolean,
     conference : ConferenceSchema,
     topic : Number,
@@ -66,3 +69,4 @@ var SessionMeeting = new Schema({
 })
 
 mongoose.model('Conference', ConferenceSchema);
+mongoose.model('SessionConference', SessionConference);

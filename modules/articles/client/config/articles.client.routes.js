@@ -1,6 +1,7 @@
 'use strict';
 
 // Setting up route
+//noinspection JSAnnotator
 angular.module('articles').config(['$stateProvider',
     function ($stateProvider) {
         // Articles state routing
@@ -44,7 +45,7 @@ angular.module('articles').config(['$stateProvider',
             })
             .state('conferences.realtimearticle', {
                 url: '/:conferenceId/realtimearticle',
-                templateUrl: 'modules/articles/client/views/realtime-article.view.html'
+                templateUrl: 'modules/articles/client/views/real_time-meeting.view.html'
             })
             .state('conferences.positionconference', {
                 url: '/:conferenceId/positionconferences',
