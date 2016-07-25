@@ -18,8 +18,12 @@ module.exports = function (app) {
         .get(articles.conferenceRead)
         .put(articles.conferenceUpdate)
         .delete(articles.delete);
+
+
+    app.route('/api/sessionConference').all(articlesPolicy.isAllowed)
+        .post(articles.createSessionConference);
         
-    app.route('/api/session-conference/:sessionId').all(articlesPolicy.isAllowed)
+    app.route('/api/sessionConference/:sessionId').all(articlesPolicy.isAllowed)
         .get(articles.readSessionConference)
         .put(articles.updateSessionConference)
         .delete(articles.deleteSessionConference);

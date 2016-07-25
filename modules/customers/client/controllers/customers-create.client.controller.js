@@ -1,5 +1,6 @@
 'use strict';
 
+//noinspection JSAnnotator
 angular.module('customers').controller('CustomersCreateController', ['$scope', 'Customers', 'Notify',
   function($scope, Customers, Notify) {
     // Customers create controller logic

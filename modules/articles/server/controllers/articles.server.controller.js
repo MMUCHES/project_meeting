@@ -110,23 +110,68 @@ exports.delete = function (req, res) {
     });
 };
 
+;
+
+/**
+ * SessionConference
+ **/
 
 // create session
 exports.createSessionConference = function (req,res){
+    var sessionConference = new SessionConference(req.body);
+    sessionConference.user = req.user;
 
-}
+    sessionConference.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(sessionConference);
+        }
+    });
+};
+
+
 // update session
 exports.updateSessionConference = function (req,res){
+    var sessionConference = req.sessionConference;
 
-}
+    sessionConference.status = req.body.status;
+    sessionConference.conference = req.body.conference;
+    sessionConference.topic = req.body.topic;
+    sessionConference.current_content = req.body.current_content;
+    
+    sessionConference.save(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(sessionConference);
+        }
+    });
+
+};
 // read session
 exports.readSessionConference = function (req,res){
-
-}
+    res.json(req.sessionConference);
+};
 // delete session
 exports.deleteSessionConference = function (req,res){
+     var sessionConference = req.sessionConference;
 
-}
+     sessionConference.remove(function (err) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(sessionConference);
+        }
+    });
+
+};
 
 // middleware
 exports.sessionConferenceByID = function (req, res, next, id) {

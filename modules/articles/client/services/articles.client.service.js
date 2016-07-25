@@ -28,7 +28,7 @@ angular.module('articles').factory('Conferences', ['$resource', function ($resou
 
 //noinspection JSAnnotator
 angular.module('articles').factory('SessionConference', ['$resource', function ($resource) {
-    return $resource('api/session-conference/:sessionId', {
+    return $resource('api/sessionConference/:sessionId', {
         sessionId: '@_id'
     }, {
         update: {

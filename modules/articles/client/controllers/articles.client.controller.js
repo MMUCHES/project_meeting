@@ -9,7 +9,7 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
         $scope.create = function () {
             $scope.conference.$save(function (response) {
                 // $scope.conference = new Conferences({});
-                $location.path('conferences/' + response._id);
+                 $location.path('conferences/' + response._id);
             });
         };
 
@@ -17,23 +17,22 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
 ]);
 
 //noinspection JSAnnotator
-angular.module('articles').controller('ConferenceSessionController', ['$scope', '$sce', '$stateParams', '$location','SessionConference', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences,Session_meeting, Upload, $timeout) {
+angular.module('articles').controller('SessionConferenceController', ['$scope', '$sce', '$stateParams', '$location','SessionConference', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    function ($scope, $sce, $stateParams, $location,SessionConference, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
 
-        $scope.session_meeting = new Session_meeting({});
-        $scope.create = function () {
-            $scope.session_meeting.$save(function (response) {
-                $location.path('conferences.realtimearticle');
-            });
-        };
+
+
+
     }
 ]);
 
 
 //noinspection JSAnnotator
-angular.module('articles').controller('ConferenceViewController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
+angular.module('articles').controller('ConferenceViewController', [
+    '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    'SessionConference',
+    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout,SessionConference) {
         $scope.authentication = Authentication;
 
         $scope.agendas = [
@@ -41,6 +40,8 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
                 chapter0s: 'active'
             }
         ];
+
+
         // Remove existing Article
         $scope.remove = function (conference) {
             if (conference) {
@@ -138,6 +139,20 @@ angular.module('articles').controller('ConferenceViewController', ['$scope', '$s
             users.splice(index, 1);
             $scope.update();
         };
+
+
+        $scope.createsession = function () {
+
+            $scope.sessionConference = new SessionConference({
+                conference : $scope.conference,
+                topic : 1,
+                current_content : $scope.conference.topic_one.contents[0]
+            });
+
+            $scope.sessionConference.$save(function (response) {
+                console.log(response);
+            });
+        };
     }
 ]);
 
@@ -164,18 +179,6 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$sce', '
         $scope.authentication = Authentication;
 
 
-        $scope.channelOptions3 = [
-            {id: '1', opt: 'ประธานกรรมการ'},
-            {id: '2', opt: 'กรรมการผู้ทรงคุณวุฒิ'},
-            {id: '3', opt: 'กรรมการ'},
-            {id: '4', opt: 'เลขานุการคณะกรรมการ'},
-            {id: '5', opt: 'ผู้ช่วยเลขานุการคณะกรรมกา'}
-        ];
-        $scope.agendas = [
-            {
-                chapter1: 'active'
-            }
-        ];
 
         $scope.uploadFiles = function (file, errFiles) {
             $scope.uploadedFile = file;
