@@ -45,7 +45,7 @@ angular.module('articles').config(['$stateProvider',
             })
             .state('conferences.realtimearticle', {
                 url: '/:conferenceId/realtimearticle',
-                templateUrl: 'modules/articles/client/views/real_time-meeting.view.html'
+                templateUrl: 'modules/articles/client/views/user-meeting.view.html'
             })
             .state('conferences.positionconference', {
                 url: '/:conferenceId/positionconferences',
@@ -78,6 +78,20 @@ angular.module('articles').config(['$stateProvider',
             .state('articles.contact', {
                 url: '/contact',
                 templateUrl: 'modules/articles/client/views/contact.view.html'
+            })
+
+            .state('sessionConference', {
+                 abstract: true,
+                 url: '/Session',
+                 template: '<ui-view/>'
+             })
+            .state('sessionConference.admin_meeting', {
+                 url: '/:sessionId',
+                 templateUrl: 'modules/articles/client/views/admin-meeting.view.html'
+            })
+            .state('sessionConference.user_meeting', {
+                url: '/:sessionId/user_meeting',
+                templateUrl: 'modules/articles/client/views/user-meeting.view.html'
             });
 
 

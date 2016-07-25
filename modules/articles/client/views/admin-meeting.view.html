@@ -1,37 +1,37 @@
 <section ng-controller="ConferenceViewController">
-
+    <h1>ADMIN</h1>
     <div class="col-md-12" style="margin-top : 50px;"> <!-- class="col-md-12 -->
         <div class="col-md-4">
-			<ul class="list-group">
-  				<a style="text-decoration: none" data-toggle="tab" href="#home" >
-  					<li class="list-group-item group-item">{{conference.topic}}</li>
-  				</a>
-  				<a style="text-decoration: none"; data-toggle="tab" href="#menu1">
-  					<li class="list-group-item group-item">วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</li>
-  				</a>
-  				<a style="text-decoration: none"; data-toggle="tab" href="#menu2">
-  					<li class="list-group-item group-item">วาระที่ 2 เรื่องรับรองรายงานการประชุม</li>
-  				</a>
- 				<a style="text-decoration: none"; data-toggle="tab" href="#menu3">
- 					<li class="list-group-item group-item">วาระที่ 3 เรื่องสืบเนื่อง</li>
- 				</a>
-				<a style="text-decoration: none"; data-toggle="tab" href="#menu4">
-					<li class="list-group-item group-item">วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</li>
-				</a>
-				<a style="text-decoration: none"; data-toggle="tab" href="#menu5">
-					<li class="list-group-item group-item">วาระที่ 5 เรื่องอื่น ๆ</li>
-				</a>
-			</ul>
+            <ul class="list-group">
+                <a style="text-decoration: none" data-toggle="tab" href="#home" >
+                    <li class="list-group-item group-item">{{conference.topic}}</li>
+                </a>
+                <a style="text-decoration: none"; data-toggle="tab" href="#menu1">
+                    <li class="list-group-item group-item">วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</li>
+                </a>
+                <a style="text-decoration: none"; data-toggle="tab" href="#menu2">
+                    <li class="list-group-item group-item">วาระที่ 2 เรื่องรับรองรายงานการประชุม</li>
+                </a>
+                <a style="text-decoration: none"; data-toggle="tab" href="#menu3">
+                    <li class="list-group-item group-item">วาระที่ 3 เรื่องสืบเนื่อง</li>
+                </a>
+                <a style="text-decoration: none"; data-toggle="tab" href="#menu4">
+                    <li class="list-group-item group-item">วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</li>
+                </a>
+                <a style="text-decoration: none"; data-toggle="tab" href="#menu5">
+                    <li class="list-group-item group-item">วาระที่ 5 เรื่องอื่น ๆ</li>
+                </a>
+            </ul>
         </div>
         <div class="col-md-8">
             <div class="tab-content">
                 <div id="home" class="tab-pane fade in active">
                     <div class="text-center">
-                    <p>{{conference.topic}}</p>
-                    <p>{{conference.number}}</p>
-                    <p>{{conference.conferenceDate}}</p>
-                    <p>{{conference.conferenceTime}}</p>
-                    <p>{{conference.conferencePlace}}</p>
+                        <p>{{conference.topic}}</p>
+                        <p>{{conference.number}}</p>
+                        <p>{{conference.conferenceDate}}</p>
+                        <p>{{conference.conferenceTime}}</p>
+                        <p>{{conference.conferencePlace}}</p>
                     </div>
                 </div>
                 <div id="menu1" class="tab-pane fade">
@@ -43,7 +43,7 @@
                             <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
                             <p style="margin-left: 40px;">{{subContent.content}}</p>
                         </div>
-                    </div>       
+                    </div>
                 </div>
                 <div id="menu2" class="tab-pane fade">
                     <p><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>

@@ -45,17 +45,16 @@
                                     <li><a ui-sref="conferences.viewarticles({conferenceId: conference._id})"
                                            class="glyphicon glyphicon-fullscreen"> ดูต้นแบบการประชุม</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a  ui-sref="conferences.realtimearticle({conferenceId: conference._id})"
+                                    <li><a  ui-sref="sessionConference.user_meeting({sessionId: sessionConference._id})"
                                            class="glyphicon glyphicon-eye-open"> เปิดการประชุม</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a id="myBtn" class="glyphicon glyphicon-trash"> ลบการประชุม</a></li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
-                <div ng-controller="SessionConferenceController">
+                <div>
                     <button ng-click="createsession()" class="btn btn-danger">สร้าง</button>
                 </div>
                 <!-- Modal -->

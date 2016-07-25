@@ -26,7 +26,15 @@ exports.invokeRolesPolicies = function () {
         }, {
             resources: '/api/conferences/:conferenceId',
             permissions: '*'
-        }]
+        }, {
+            resources: '/api/sessionConference',
+            permissions: '*'
+        }, {
+            resources: '/api/sessionConference/:sessionId',
+            permissions: '*'
+        }
+
+        ]
     }, {
         roles: ['user'],
         allows: [{
@@ -41,7 +49,14 @@ exports.invokeRolesPolicies = function () {
         }, {
             resources: '/api/conferences/:conferenceId',
             permissions: '*'
-        }]
+        }, {
+            resources: '/api/sessionConference',
+            permissions: '*'
+        }, {
+            resources: '/api/sessionConference/:sessionId',
+            permissions: '*'
+        }
+        ]
     }, {
         roles: ['guest'],
         allows: [{
@@ -56,7 +71,14 @@ exports.invokeRolesPolicies = function () {
         }, {
             resources: '/api/conferences/:conferenceId',
             permissions: '*'
-        }]
+        }, {
+            resources: '/api/sessionConference',
+            permissions: '*'
+        }, {
+            resources: '/api/sessionConference/:sessionId',
+            permissions: '*'
+        }
+        ]
     }]);
 };
 

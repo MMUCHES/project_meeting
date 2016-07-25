@@ -16,17 +16,6 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
     }
 ]);
 
-//noinspection JSAnnotator
-angular.module('articles').controller('SessionConferenceController', ['$scope', '$sce', '$stateParams', '$location','SessionConference', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    function ($scope, $sce, $stateParams, $location,SessionConference, Authentication, Conferences, Upload, $timeout) {
-        $scope.authentication = Authentication;
-
-
-
-
-    }
-]);
-
 
 //noinspection JSAnnotator
 angular.module('articles').controller('ConferenceViewController', [
