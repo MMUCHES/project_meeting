@@ -9,7 +9,7 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
         $scope.create = function () {
             $scope.conference.$save(function (response) {
                 // $scope.conference = new Conferences({});
-                 $location.path('conferences/' + response._id);
+                $location.path('conferences/' + response._id);
             });
         };
 
@@ -21,15 +21,19 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
 angular.module('articles').controller('ConferenceViewController', [
     '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
     'SessionConference',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout,SessionConference) {
+    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
 
-        $scope.agendas = [
-            {
-                chapter0s: 'active'
-            }
-        ];
+        $scope.conference = {};
+        function init() {
+            $scope.conferences = Conferences.get({
+                conferenceId: $stateParams.conferenceId
+            }, function (r) {
+                $scope.conference = r;
+            });
+        }
 
+        init();
 
         // Remove existing Article
         $scope.remove = function (conference) {
@@ -47,17 +51,6 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
-        $scope.conference = {};
-        function init() {
-            $scope.conferences = Conferences.get({
-                conferenceId: $stateParams.conferenceId
-            }, function (r) {
-                $scope.conference = r;
-            });
-        }
-
-        init();
-
 
         $scope.update = function () {
             $scope.conference.$update(function () {
@@ -129,29 +122,31 @@ angular.module('articles').controller('ConferenceViewController', [
             $scope.update();
         };
 
-
+        // create session
         $scope.createsession = function () {
 
             $scope.sessionConference = new SessionConference({
-                conference : $scope.conference,
-                topic : 1,
-                current_content : $scope.conference.topic_one.contents[0]
+                status: true,
+                conference: $scope.conference,
+                topic: 1,
+                current_content: $scope.conference.topic_one.contents[0]
             });
 
             $scope.sessionConference.$save(function (response) {
                 console.log(response);
+                $location.path('sessions/' + response._id);
             });
         };
+
     }
 ]);
 
-
 //noinspection JSAnnotator
-angular.module('articles').controller('ConferenceListController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
+angular.module('articles').controller('ConferenceListController', ['$scope', 'SessionConference', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    function ($scope, SessionConference, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
 
-
+        
         $scope.conferences = [];
         function init() {
             $scope.conferences = Conferences.query();
@@ -161,109 +156,48 @@ angular.module('articles').controller('ConferenceListController', ['$scope', '$s
 
     }
 ]);
-// Articles controller
+
 //noinspection JSAnnotator
-angular.module('articles').controller('ArticlesController', ['$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Articles', 'Upload', '$timeout',
-    function ($scope, $sce, $stateParams, $location, Authentication, Articles, Upload, $timeout) {
+angular.module('articles').controller('SessionAdminController', [
+    '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    'SessionConference',
+    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
 
+        $scope.sessionConference = {};
+        function init() {
+            $scope.sessionConferences = SessionConference.get({
+                sessionId: $stateParams.sessionId
+            }, function (r) {
+                $scope.sessionConference = r;
+            });
+        }
 
+        init();
 
-        $scope.uploadFiles = function (file, errFiles) {
-            $scope.uploadedFile = file;
-            $scope.errFile = errFiles && errFiles[0];
-            if (file) {
-                file.upload = Upload.upload({
-                    url: '/api/uploads',
-                    data: {uploadedFile: file}
-                });
+        $scope.remove = function (sessionConference) {
+            if (sessionConference) {
+                sessionConference.$remove();
 
-                file.upload.then(function (response) {
-                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
-                    $scope.articleImageURL = response.data.uploadedURL;
-                    $timeout(function () {
-                        file.result = response.data;
-                    });
-                }, function (response) {
-                    if (response.status > 0)
-                        $scope.errorMsg = response.status + ': ' + response.data;
-                }, function (evt) {
-                    file.progress = Math.min(100, parseInt(100.0 *
-                        evt.loaded / evt.total));
-                });
-            }
-        };
-
-        $scope.tinymceOptions = {
-            selector: 'textarea',
-            inline: false,
-            skin: 'lightgray',
-            theme: 'modern',
-            plugins: [
-                'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
-                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
-                'save table contextmenu directionality emoticons template paste textcolor'
-            ],
-            menubar: 'edit insert view format',
-            toolbar: ['undo redo cut copy paste | link image | print preview fullscreen',
-                'alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor | formatselect fontselect fontsizeselect '
-            ],
-            file_browser_callback: function (field_name, url, type, win) {
-                //configure the file browser callback
-            }
-        };
-
-
-        // Remove existing Article
-        $scope.remove = function (article) {
-            if (article) {
-                article.$remove();
-
-                for (var i in $scope.articles) {
-                    if ($scope.articles[i] === article) {
-                        $scope.articles.splice(i, 1);
+                for (var i in $scope.sessionConferences) {
+                    if ($scope.sessionConferences[i] === sessionConference) {
+                        $scope.sessionConferences.splice(i, 1);
                     }
                 }
             } else {
-                $scope.article.$remove(function () {
-                    $location.path('articles');
+                $scope.sessionConference.$remove(function () {
+                    $location.path('/articles/list_article');
                 });
             }
         };
 
-        // Update existing Article
-        $scope.update = function (isValid) {
-            $scope.error = null;
+        $scope.update = function () {
+            $scope.sessionConference.$update(function () {
 
-            if (!isValid) {
-                $scope.$broadcast('show-errors-check-validity', 'articleForm');
-
-                return false;
-            }
-
-            var article = $scope.article;
-
-            article.$update(function () {
-                // $location.path('articles/' + article._id);
             }, function (errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
         };
 
-        // Find a list of Articles
-        $scope.find = function () {
-            $scope.articles = Articles.query();
-        };
-
-        // Find existing Article
-        $scope.findOne = function () {
-            Articles.get({
-                articleId: $stateParams.articleId
-            }, function (r) {
-                r.topics = $sce.trustAsHtml(r.topics);
-                console.log(r);
-                $scope.article = r;
-            });
-        };
     }
 ]);

@@ -80,16 +80,16 @@ angular.module('articles').config(['$stateProvider',
                 templateUrl: 'modules/articles/client/views/contact.view.html'
             })
 
-            .state('sessionConference', {
+            .state('sessions', {
                  abstract: true,
-                 url: '/Session',
+                 url: '/sessions',
                  template: '<ui-view/>'
              })
-            .state('sessionConference.admin_meeting', {
+            .state('sessions.admin_meeting', {
                  url: '/:sessionId',
                  templateUrl: 'modules/articles/client/views/admin-meeting.view.html'
             })
-            .state('sessionConference.user_meeting', {
+            .state('sessions.user_meeting', {
                 url: '/:sessionId/user_meeting',
                 templateUrl: 'modules/articles/client/views/user-meeting.view.html'
             });
@@ -97,3 +97,4 @@ angular.module('articles').config(['$stateProvider',
 
     }
 ]);
+

@@ -34,8 +34,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="title">วันที่ประชุม *</label>
                         <div class="col-sm-4">
-                                <input name="date_m" type="text" ng-model="conference.conferenceDate" id="date_m"
-                                       class="form-control">
+                            <input name="date_m" type="text" ng-model="conference.conferenceDate" id="date_m"
+                                   class="form-control">
                         </div>
                     </div>
 
@@ -43,8 +43,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="title">เวลาประชุม *</label>
                         <div class="col-sm-4">
-                                <input name="time_m" type="text" ng-model="conference.conferenceTime" id="time_m"
-                                       class="form-control" required/>
+                            <input name="time_m" type="text" ng-model="conference.conferenceTime" id="time_m"
+                                   class="form-control" required/>
                         </div>
                     </div>
 
@@ -59,20 +59,8 @@
                         <label class="col-sm-2 control-label" for="title"></label>
                         <div class="col-sm-8">
                             <button class="btn bg_1 col-sm-2">บันทึก</button>
-                            <div class="span4 col-sm-5">
-                                <div class="alert alert-danger fade">
-                                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                    <strong>บันทึก</strong> การแก้ไขเรียบร้อย
-                                </div>
-                            </div>
                         </div>
                     </div>
-                    <script>
-                        $(".btn").on("click", function() {
-                            $(".alert").removeClass("in").show();
-                            $(".alert").delay(500).addClass("in").fadeOut(2000);
-                        });
-                    </script>
                 </form>
             </div>
         </div>

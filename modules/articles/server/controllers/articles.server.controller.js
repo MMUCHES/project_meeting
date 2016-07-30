@@ -132,7 +132,18 @@ exports.createSessionConference = function (req,res){
     });
 };
 
-
+// list session
+exports.listSessionConference = function (req, res) {
+    SessionConference.find().sort('-created').populate('user', 'displayName').exec(function (err, sessionConference) {
+        if (err) {
+            return res.status(400).send({
+                message: errorHandler.getErrorMessage(err)
+            });
+        } else {
+            res.json(sessionConference);
+        }
+    });
+};
 // update session
 exports.updateSessionConference = function (req,res){
     var sessionConference = req.sessionConference;

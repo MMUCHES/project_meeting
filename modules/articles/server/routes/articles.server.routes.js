@@ -21,6 +21,7 @@ module.exports = function (app) {
 
 
     app.route('/api/sessionConference').all(articlesPolicy.isAllowed)
+        .get(articles.listSessionConference)
         .post(articles.createSessionConference);
         
     app.route('/api/sessionConference/:sessionId').all(articlesPolicy.isAllowed)
