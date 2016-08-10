@@ -1,6 +1,7 @@
 'use strict';
 
 // Configure the 'chat' module routes
+//noinspection JSAnnotator
 angular.module('chat').config(['$stateProvider',
   function ($stateProvider) {
     $stateProvider

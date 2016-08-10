@@ -1,6 +1,7 @@
 'use strict';
 
 // Create the 'chat' controller
+//noinspection JSAnnotator
 angular.module('chat').controller('ChatController', ['$scope', '$location', 'Authentication', 'Socket',
   function ($scope, $location, Authentication, Socket) {
     // Create a messages array

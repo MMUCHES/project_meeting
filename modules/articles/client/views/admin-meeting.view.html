@@ -1,7 +1,24 @@
 <section ng-controller="SessionAdminController">
+
     <h1>ADMIN</h1>
-    <button class="btn btn-danger" ng-click="remove()">Delete</button>
-    <p>วาระที่ {{sessionConference.topic}}</p>
+
+    <button class="btn btn-danger" ng-click="remove()">Delete Session</button>
+
+    <p>status : {{sessionConference.status}}</p>
+    <p>topics : {{sessionConference.topic}}</p>
+
+
+    <div class="form-group ">
+
+        <div class="col-sm-4">
+            <input name="session_m" type="text" ng-model="sessionConference.topic" id="session_m"
+                   class="form-control">
+        </div>
+        <div class="col-sm-8">
+
+            <button class="btn bg_1" ng-click="update()">บันทึก</button>
+        </div>
+    </div>
 
     <div class="col-md-12" style="margin-top : 50px;"> <!-- class="col-md-12 -->
         <div class="col-md-4">

@@ -159,9 +159,9 @@ angular.module('articles').controller('ConferenceListController', ['$scope', 'Se
 
 //noinspection JSAnnotator
 angular.module('articles').controller('SessionAdminController', [
-    '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    '$scope', '$sce', '$stateParams', '$location', 'Authentication','Socket', 'Conferences', 'Upload', '$timeout',
     'SessionConference',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
+    function ($scope, $sce, $stateParams, $location, Authentication, Socket, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
 
         $scope.sessionConference = {};
@@ -198,6 +198,7 @@ angular.module('articles').controller('SessionAdminController', [
                 $scope.error = errorResponse.data.message;
             });
         };
+
 
     }
 ]);
