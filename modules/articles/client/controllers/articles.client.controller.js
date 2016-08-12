@@ -5,28 +5,6 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
 
-        $scope.conference = new Conferences({});
-        $scope.create = function () {
-            $scope.conference.$save(function (response) {
-                // $scope.conference = new Conferences({});
-                $location.path('conferences/' + response._id);
-            });
-        };
-
-    }
-]);
-
-
-//noinspection JSAnnotator
-angular.module('articles').controller('ConferenceViewController', [
-    '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    'SessionConference',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
-        $scope.authentication = Authentication;
-
-
-
-
         $scope.uploadFiles = function(file, errFiles) {
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
@@ -52,7 +30,24 @@ angular.module('articles').controller('ConferenceViewController', [
             }
         };
 
+        $scope.conference = new Conferences({});
+        $scope.create = function () {
+            $scope.conference.$save(function (response) {
+                // $scope.conference = new Conferences({});
+                $location.path('conferences/' + response._id);
+            });
+        };
 
+    }
+]);
+
+
+//noinspection JSAnnotator
+angular.module('articles').controller('ConferenceViewController', [
+    '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
+    'SessionConference',
+    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
+        $scope.authentication = Authentication;
 
 
         $scope.conference = {};
