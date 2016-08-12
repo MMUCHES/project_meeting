@@ -9,14 +9,12 @@ var ConferenceFile = new Schema({
 });
 
 
-
 var Content = new Schema({
     header: String,
     content: String,
     files: [ConferenceFile],
     subContents : [this]
 });
-
 
 
 var ConferenceUser = new Schema({

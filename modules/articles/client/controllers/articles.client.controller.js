@@ -23,7 +23,6 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
                 file.upload.then(function (response) {
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
 
-
                     var newfile = {
                         filename : $scope.uploadedFile.name,
                         url : response.data.uploadedURL
@@ -34,7 +33,6 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
                     }
 
                     $scope.conference.files.push(newfile);
-
 
                     $timeout(function () {
                         file.result = response.data;
@@ -70,10 +68,20 @@ angular.module('articles').controller('ConferenceViewController', [
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
 
+        $scope.conference = {};
+        function init() {
+            $scope.conferences = Conferences.get({
+                conferenceId: $stateParams.conferenceId
+            }, function (r) {
+                $scope.conference = r;
+            });
+        }
 
+        init();
 
 
         $scope.uploadFiles = function(file, errFiles) {
+            console.log(file,errFiles)
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -84,7 +92,17 @@ angular.module('articles').controller('ConferenceViewController', [
 
                 file.upload.then(function (response) {
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
-                    $scope.articleImageURL = response.data.uploadedURL;
+                    var newfile = {
+                        filename : $scope.uploadedFile.name,
+                        url : response.data.uploadedURL
+                    }
+
+                    if(!$scope.conference.files){
+                        $scope.conference.files = []
+                    }
+
+                    $scope.conference.files.push(newfile);
+
                     $timeout(function () {
                         file.result = response.data;
                     });
@@ -100,17 +118,6 @@ angular.module('articles').controller('ConferenceViewController', [
 
 
 
-
-        $scope.conference = {};
-        function init() {
-            $scope.conferences = Conferences.get({
-                conferenceId: $stateParams.conferenceId
-            }, function (r) {
-                $scope.conference = r;
-            });
-        }
-
-        init();
 
         // Remove existing Article
         $scope.remove = function (conference) {

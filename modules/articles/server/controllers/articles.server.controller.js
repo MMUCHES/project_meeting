@@ -56,7 +56,7 @@ exports.conferenceUpdate = function (req, res) {
     conference.topic_four = req.body.topic_four;
     conference.topic_five = req.body.topic_five;
     conference.conference_users = req.body.conference_users;
-    conference.articleImageURL = req.body.articleImageURL;
+    conference.files = req.body.files;
 
     conference.save(function (err) {
         if (err) {

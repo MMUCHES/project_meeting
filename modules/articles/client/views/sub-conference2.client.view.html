@@ -19,6 +19,36 @@
                             type="button"> บันทึกการแก้ไข
                     </button>
 
+                    <div ng-repeat="content in conference.files ">
+                        <p>{{content.filename}}</p>
+                    </div>
+
+
+                    <div class="form-group" >
+                        <label for="title">Featured Image </label>
+                        <button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
+                                ngf-select="uploadFiles($file, $invalidFiles)"
+                                ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
+                                accept="image/*" ngf-max-size="1MB">
+                            Select Featured Image</button>
+                        <div class="text-center">
+                            <img ng-show="conference.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+                        </div>
+                        <div class="text-center">
+                            <div class="progress" ng-show="uploadedFile.progress >= 0">
+                                <div style="width:{{uploadedFile.progress}}%"
+                                     ng-bind="uploadedFile.progress + '%'"></div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-secondary" ng-click="removeFile()" ng-show="uploadedFile">Remove</button>
+                        </div>
+                        <div class="alert alert-danger" ng-show="conference.file.$error.maxSize">File too large
+                            {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
+                    </div>
+
+
+
                 </div>
             </div>
         </div>
