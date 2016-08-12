@@ -78,7 +78,7 @@
                                 accept="image/*" ngf-max-size="1MB">
                             Select Featured Image</button>
                         <div class="text-center">
-                            <img ng-show="articleForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+                            <img ng-show="conference.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
                         </div>
                         <div class="text-center">
                             <div class="progress" ng-show="uploadedFile.progress >= 0">
@@ -87,9 +87,9 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+                            <button type="button" class="btn btn-secondary" ng-click="removeFile()" ng-show="uploadedFile">Remove</button>
                         </div>
-                        <div class="alert alert-danger" ng-show="articleForm.file.$error.maxSize">File too large
+                        <div class="alert alert-danger" ng-show="conference.file.$error.maxSize">File too large
                             {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
                     </div>
 
