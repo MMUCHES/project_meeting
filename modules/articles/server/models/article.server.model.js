@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var File = new Schema({
+var ConferenceFile = new Schema({
     filename: String,
     url: String,
 });
@@ -58,11 +58,7 @@ var ConferenceSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    articleImageURL: {
-        type: String,
-        default: '',
-        trim: true
-    }
+    files : [ConferenceFile]
 
 });
 
