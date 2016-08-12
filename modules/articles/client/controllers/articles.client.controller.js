@@ -5,12 +5,57 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
 
+
+        $scope.uploadFiles = function(file, errFiles) {
+            console.log(file,errFiles)
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+
+
+                    var newfile = {
+                        filename : $scope.uploadedFile.name,
+                        url : response.data.uploadedURL
+                    }
+
+                    if(!$scope.conference.files){
+                        $scope.conference.files = []
+                    }
+
+                    $scope.conference.files.push(newfile);
+
+
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+
         $scope.conference = new Conferences({});
+        $scope.conferenceFile = {
+            filename : null,
+            url : null
+        }
         $scope.create = function () {
-            $scope.conference.$save(function (response) {
-                // $scope.conference = new Conferences({});
-                $location.path('conferences/' + response._id);
-            });
+            // $scope.conference.$save(function (response) {
+            //     // $scope.conference = new Conferences({});
+            //     $location.path('conferences/' + response._id);
+            // });
+            console.log($scope.conference)
         };
 
     }
