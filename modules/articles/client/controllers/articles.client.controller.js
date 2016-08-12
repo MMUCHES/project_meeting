@@ -5,6 +5,10 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
 
+        $scope.removeFile = function () {
+            $scope.uploadedFile = null
+            $scope.conference.files = [];
+        }
 
         $scope.uploadFiles = function(file, errFiles) {
             console.log(file,errFiles)
@@ -51,10 +55,10 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
             url : null
         }
         $scope.create = function () {
-            // $scope.conference.$save(function (response) {
-            //     // $scope.conference = new Conferences({});
-            //     $location.path('conferences/' + response._id);
-            // });
+            $scope.conference.$save(function (response) {
+                // $scope.conference = new Conferences({});
+                $location.path('conferences/' + response._id);
+            });
             console.log($scope.conference)
         };
 

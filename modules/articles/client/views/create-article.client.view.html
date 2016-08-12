@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+                            <button type="button" class="btn btn-secondary" ng-click="removeFile()" ng-show="uploadedFile">Remove</button>
                         </div>
                         <div class="alert alert-danger" ng-show="conference.file.$error.maxSize">File too large
                             {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
