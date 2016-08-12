@@ -24,6 +24,37 @@ angular.module('articles').controller('ConferenceViewController', [
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
 
+
+
+
+        $scope.uploadFiles = function(file, errFiles) {
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    $scope.articleImageURL = response.data.uploadedURL;
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+
+
+
+
         $scope.conference = {};
         function init() {
             $scope.conferences = Conferences.get({

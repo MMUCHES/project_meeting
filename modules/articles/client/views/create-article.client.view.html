@@ -16,7 +16,7 @@
 
             <div style="padding-top:30px" class="panel-body">
                 <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
-                <form name="articleForm" class="form-horizontal" >
+                <form name="articleForm" class="form-horizontal">
                     <div class="form-group" show-errors>
                         <label class="col-sm-2 control-label" for="title">หัวข้อการประชุม *</label>
                         <div class="col-sm-8">
@@ -36,8 +36,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="title">วันที่ประชุม *</label>
                         <div class="col-sm-4">
-                                <input name="date_m" type="text" ng-model="conference.conferenceDate" id="date_m"
-                                       class="form-control">
+                            <input name="date_m" type="text" ng-model="conference.conferenceDate" id="date_m"
+                                   class="form-control">
                         </div>
                     </div>
 
@@ -45,8 +45,8 @@
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="title">เวลาประชุม *</label>
                         <div class="col-sm-4">
-                                <input name="time_m" type="text" ng-model="conference.conferenceTime" id="time_m"
-                                       class="form-control">
+                            <input name="time_m" type="text" ng-model="conference.conferenceTime" id="time_m"
+                                   class="form-control">
                         </div>
                     </div>
 
@@ -68,6 +68,32 @@
                     <div ng-show="error" class="text-danger">
                         <strong ng-bind="error"></strong>
                     </div>
+
+
+                    <div class="form-group" show-errors>
+                        <label for="title">Featured Image </label>
+                        <button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
+                                ngf-select="uploadFiles($file, $invalidFiles)"
+                                ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
+                                accept="image/*" ngf-max-size="1MB">
+                            Select Featured Image</button>
+                        <div class="text-center">
+                            <img ng-show="articleForm.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+                        </div>
+                        <div class="text-center">
+                            <div class="progress" ng-show="uploadedFile.progress >= 0">
+                                <div style="width:{{uploadedFile.progress}}%"
+                                     ng-bind="uploadedFile.progress + '%'"></div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button type="button" class="btn btn-secondary" ng-click="uploadedFile = null" ng-show="uploadedFile">Remove</button>
+                        </div>
+                        <div class="alert alert-danger" ng-show="articleForm.file.$error.maxSize">File too large
+                            {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
+                    </div>
+
+
                 </form>
             </div>
         </div>

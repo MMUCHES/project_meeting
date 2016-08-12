@@ -26,8 +26,6 @@ module.exports = {
         'public/lib/angular-ui-tinymce/src/tinymce.js',
         'public/lib/ng-file-upload/ng-file-upload-shim.js',
         'public/lib/ng-file-upload/ng-file-upload.js',
-        'public/lib/ng-file-upload/ng-file-upload-shim.min.js',
-        'public/lib/ng-file-upload/ng-file-upload.min.js',
         'public/lib/moment/moment.js',
         'public/lib/angular-material/angular-material.js',
         'public/lib/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',

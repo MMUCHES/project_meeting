@@ -45,6 +45,7 @@
     "helmet": "~0.9.1",
     "jasmine-core": "^2.3.4",
     "lodash": "^3.10.0",
+    "multiparty": "~4.1.2",
     "method-override": "^2.3.3",
     "mocha": "~1.20.0",
     "mongoose": "~4.2.3",

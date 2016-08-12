@@ -35,6 +35,12 @@ module.exports = {
       limits: {
         fileSize: 1*1024*1024 // Max file size in bytes (1 MB)
       }
+    },
+    fileUpload: {
+      dest: './modules/articles/client/img/uploads/', // file upload destination path
+      limits: {
+        fileSize: 10*1024*1024 // Max file size in bytes (10 MB)
+      }
     }
   }
 };

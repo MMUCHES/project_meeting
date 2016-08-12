@@ -57,7 +57,13 @@ var ConferenceSchema = new Schema({
     user: {
         type: Schema.ObjectId,
         ref: 'User'
+    },
+    articleImageURL: {
+        type: String,
+        default: '',
+        trim: true
     }
+
 });
 
 var SessionConference = new Schema({

@@ -5,6 +5,10 @@
             <li class="active"><span>รายการประชุมทั้งหมด</span></li>
         </ol>
     </div>
+
+
+
+
     <div style="margin-top:10px;" class="mainbox col-md-12">
         <div class="panel panel-info">
             <div class="panel-heading">
@@ -22,6 +26,9 @@
                                                        class="animated" ng-show="variable"
                                                        ng-class="{'fadeIn':variable}"></span>
                                 <h4 style="color: #0099FF" ng-bind="conference.topic"></h4>
+
+                                <img ng-src="{{conference.articleImageURL}}" height="100" />
+
                                 <p style="color: #0099FF" ng-bind="conference.topic_one.title"></p>
                                 <p style="color: #0099FF" ng-bind="conference.header"></p>
                                 <p><span ng-bind="conference.conferenceDate"></span>
