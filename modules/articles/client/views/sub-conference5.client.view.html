@@ -15,11 +15,46 @@
                     <button class="btn bg_1  glyphicon glyphicon-saved" ng-click="update()"
                             type="button"> บันทึกการแก้ไข
                     </button>
+                    <button type="button" class="btn bg_1  glyphicon glyphicon-upload" type="file"
+                            ngf-select="uploadFiles_5($file, $invalidFiles)"
+                            ng-model="uploadedFile"> เพิ่มไฟล์
+                    </button>
 
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="mainbox col-md-6 ">
+            <div class="panel panel-info">
+
+                <div style="padding-top:30px" class="panel-body ">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th style="width: 5%">ลำดับ</th>
+                            <th style="width: 40%">ชื่อ</th>
+                            <th style="width: 5%">จัดการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="content in conference.topic_five.files">
+                            <td>{{$index+1}}</td>
+                            <td><a  href="{{content.url}}"  target="_blank">{{content.filename}}</a></td>
+                            <td>
+                                <button class="btn btn-sm btn-danger"
+                                        ng-click="removeUploadFiles_5(conference,topic_five,files,$index)">ลบ
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

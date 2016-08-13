@@ -18,56 +18,47 @@
                     <button class="btn bg_1  glyphicon glyphicon-saved" ng-click="update()"
                             type="button"> บันทึกการแก้ไข
                     </button>
-
-
-
-
-
-
-                    <div class="form-group" >
-                        <label for="title">Featured Image </label>
-                        <button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
-                                ngf-select="uploadFiles2($file, $invalidFiles)"
-                                ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
-                                accept="image/*" ngf-max-size="1MB">
-                            Select Featured Image
-                        </button>
-                        <div class="text-center">
-                            <img ng-show="conference.topic_two.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
-                        </div>
-                        <div class="text-center">
-                            <div class="progress" ng-show="uploadedFile.progress >= 0">
-                                <div style="width:{{uploadedFile.progress}}%"
-                                     ng-bind="uploadedFile.progress + '%'"></div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-secondary" ng-click="removeFile()"
-                                    ng-show="uploadedFile">Remove
-                            </button>
-                        </div>
-                        <div class="alert alert-danger" ng-show="conference.topic_two.file.$error.maxSize">File too large
-                            {{errorFiles[0].size / 1000000|number:1}}MB: max 1M
-                        </div>
-                    </div>
-
-                    <div ng-repeat="content in conference.topic_two.files ">
-                        <p>{{content.filename}}</p>
-                        <img ng-src="{{content.url}}" id="photo-id" height="100"/>
-                    </div>
-
-
-
-
-
-
-
+                    <button type="button" class="btn bg_1  glyphicon glyphicon-upload" type="file"
+                            ngf-select="uploadFiles_2($file, $invalidFiles)"
+                            ng-model="uploadedFile"> เพิ่มไฟล์
+                    </button>
 
 
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="mainbox col-md-6 ">
+            <div class="panel panel-info">
+
+                <div style="padding-top:30px" class="panel-body ">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th style="width: 5%">ลำดับ</th>
+                            <th style="width: 40%">ชื่อ</th>
+                            <th style="width: 5%">จัดการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="content in conference.topic_two.files">
+                            <td>{{$index+1}}</td>
+                            <td><a  href="{{content.url}}"  target="_blank">{{content.filename}}</a></td>
+                            <td>
+                                <button class="btn btn-sm btn-danger"
+                                        ng-click="removeUploadFiles_2(conference,topic_two,files,$index)">ลบ
+                                </button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-striped">
             <thead>

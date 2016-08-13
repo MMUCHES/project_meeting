@@ -10,8 +10,8 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
             $scope.conference.files = [];
         }
 
-        $scope.uploadFiles = function(file, errFiles) {
-            console.log(file,errFiles)
+        $scope.uploadFiles = function (file, errFiles) {
+            console.log(file, errFiles)
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -24,11 +24,11 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
 
                     var newfile = {
-                        filename : $scope.uploadedFile.name,
-                        url : response.data.uploadedURL
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
                     }
 
-                    if(!$scope.conference.files){
+                    if (!$scope.conference.files) {
                         $scope.conference.files = []
                     }
 
@@ -84,8 +84,8 @@ angular.module('articles').controller('ConferenceViewController', [
             $scope.conference.topic_one.files = [];
         };
 
-        $scope.uploadFiles_1 = function(file, errFiles) {
-            console.log(file,errFiles);
+        $scope.uploadFiles_1 = function (file, errFiles) {
+            console.log(file, errFiles);
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -97,11 +97,11 @@ angular.module('articles').controller('ConferenceViewController', [
                 file.upload.then(function (response) {
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
                     var newfile = {
-                        filename : $scope.uploadedFile.name,
-                        url : response.data.uploadedURL
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
                     };
 
-                    if(!$scope.conference.topic_one.files){
+                    if (!$scope.conference.topic_one.files) {
                         $scope.conference.topic_one.files = []
                     }
 
@@ -110,6 +110,7 @@ angular.module('articles').controller('ConferenceViewController', [
 
                     $timeout(function () {
                         file.result = response.data;
+                        $scope.update();
                     });
                 }, function (response) {
                     if (response.status > 0)
@@ -120,16 +121,13 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
-
-
-
-        $scope.removeUploadFiles_1 = function (conference, topic_one ,files, index) {
+        $scope.removeUploadFiles_1 = function (conference, topic_one, files, index) {
             conference.topic_one.files.splice(index, 1);
             $scope.update();
         };
 
-        $scope.uploadFiles_2 = function(file, errFiles) {
-            console.log(file,errFiles);
+        $scope.uploadFiles_2 = function (file, errFiles) {
+            console.log(file, errFiles);
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -141,12 +139,12 @@ angular.module('articles').controller('ConferenceViewController', [
                 file.upload.then(function (response) {
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
                     var newfile = {
-                        filename : $scope.uploadedFile.name,
-                        url : response.data.uploadedURL
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
                     };
 
-                    if(!$scope.conference.topic_one.files){
-                        $scope.conference.topic_one.files = []
+                    if (!$scope.conference.topic_two.files) {
+                        $scope.conference.topic_two.files = []
                     }
 
 
@@ -154,6 +152,7 @@ angular.module('articles').controller('ConferenceViewController', [
 
                     $timeout(function () {
                         file.result = response.data;
+                        $scope.update();
                     });
                 }, function (response) {
                     if (response.status > 0)
@@ -164,8 +163,55 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
-        $scope.uploadFiles_3= function(file, errFiles) {
-            console.log(file,errFiles);
+        $scope.removeUploadFiles_2 = function (conference, topic_two, files, index) {
+            conference.topic_two.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_3 = function (file, errFiles) {
+            console.log(file, errFiles);
+            $scope.uploaddFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
+                    };
+
+                    if (!$scope.conference.topic_three.files) {
+                        $scope.conference.topic_three.files = []
+                    }
+
+
+                    $scope.conference.topic_three.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                        $scope.update();
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.removeUploadFiles_3 = function (conference, topic_three, files, index) {
+            conference.topic_three.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_4 = function (file, errFiles) {
+            console.log(file, errFiles);
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -177,19 +223,20 @@ angular.module('articles').controller('ConferenceViewController', [
                 file.upload.then(function (response) {
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
                     var newfile = {
-                        filename : $scope.uploadedFile.name,
-                        url : response.data.uploadedURL
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
                     };
 
-                    if(!$scope.conference.topic_one.files){
-                        $scope.conference.topic_one.files = []
+                    if (!$scope.conference.topic_four.files) {
+                        $scope.conference.topic_four.files = []
                     }
 
 
-                    $scope.conference.topic_two.files.push(newfile);
+                    $scope.conference.topic_four.files.push(newfile);
 
                     $timeout(function () {
                         file.result = response.data;
+                        $scope.update();
                     });
                 }, function (response) {
                     if (response.status > 0)
@@ -200,8 +247,13 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
-        $scope.uploadFiles_4 = function(file, errFiles) {
-            console.log(file,errFiles);
+        $scope.removeUploadFiles_4 = function (conference, topic_four, files, index) {
+            conference.topic_four.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_5 = function (file, errFiles) {
+            console.log(file, errFiles);
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -213,19 +265,20 @@ angular.module('articles').controller('ConferenceViewController', [
                 file.upload.then(function (response) {
                     console.log('File is successfully uploaded to ' + response.data.uploadedURL);
                     var newfile = {
-                        filename : $scope.uploadedFile.name,
-                        url : response.data.uploadedURL
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
                     };
 
-                    if(!$scope.conference.topic_one.files){
-                        $scope.conference.topic_one.files = []
+                    if (!$scope.conference.topic_five.files) {
+                        $scope.conference.topic_five.files = []
                     }
 
 
-                    $scope.conference.topic_two.files.push(newfile);
+                    $scope.conference.topic_five.files.push(newfile);
 
                     $timeout(function () {
                         file.result = response.data;
+                        $scope.update();
                     });
                 }, function (response) {
                     if (response.status > 0)
@@ -236,43 +289,10 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
-        $scope.uploadFiles_5 = function(file, errFiles) {
-            console.log(file,errFiles);
-            $scope.uploadedFile = file;
-            $scope.errFile = errFiles && errFiles[0];
-            if (file) {
-                file.upload = Upload.upload({
-                    url: '/api/uploads',
-                    data: {uploadedFile: file}
-                });
-
-                file.upload.then(function (response) {
-                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
-                    var newfile = {
-                        filename : $scope.uploadedFile.name,
-                        url : response.data.uploadedURL
-                    };
-
-                    if(!$scope.conference.topic_one.files){
-                        $scope.conference.topic_one.files = []
-                    }
-
-
-                    $scope.conference.topic_two.files.push(newfile);
-
-                    $timeout(function () {
-                        file.result = response.data;
-                    });
-                }, function (response) {
-                    if (response.status > 0)
-                        $scope.errorMsg = response.status + ': ' + response.data;
-                }, function (evt) {
-                    file.progress = Math.min(100, parseInt(100.0 *
-                        evt.loaded / evt.total));
-                });
-            }
+        $scope.removeUploadFiles_5 = function (conference, topic_five, files, index) {
+            conference.topic_five.files.splice(index, 1);
+            $scope.update();
         };
-
 
 
         // Remove existing Article
@@ -386,7 +406,7 @@ angular.module('articles').controller('ConferenceListController', ['$scope', 'Se
     function ($scope, SessionConference, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout) {
         $scope.authentication = Authentication;
 
-        
+
         $scope.conferences = [];
         function init() {
             $scope.conferences = Conferences.query();
@@ -399,7 +419,7 @@ angular.module('articles').controller('ConferenceListController', ['$scope', 'Se
 
 //noinspection JSAnnotator
 angular.module('articles').controller('SessionAdminController', [
-    '$scope', '$sce', '$stateParams', '$location', 'Authentication','Socket', 'Conferences', 'Upload', '$timeout',
+    '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Socket', 'Conferences', 'Upload', '$timeout',
     'SessionConference',
     function ($scope, $sce, $stateParams, $location, Authentication, Socket, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;

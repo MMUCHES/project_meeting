@@ -44,15 +44,18 @@ var ConferenceSchema = new Schema({
     },
     topic_three: {
         title: String,
-        contents: [Content]
+        contents: [Content],
+        files : [ConferenceFile]
     },
     topic_four: {
         title: String,
-        contents: [Content]
+        contents: [Content],
+        files : [ConferenceFile]
     },
     topic_five: {
         title: String,
-        contents: [Content]
+        contents: [Content],
+        files : [ConferenceFile]
     },
     user: {
         type: Schema.ObjectId,
