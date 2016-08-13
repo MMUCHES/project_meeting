@@ -1,117 +1,198 @@
 <section ng-controller="SessionAdminController">
 
-    <h1>ADMIN</h1>
-
-    <button class="btn btn-danger" ng-click="remove()">Delete Session</button>
-
-    <p>status : {{sessionConference.status}}</p>
-    <p>topics : {{sessionConference.topic}}</p>
-
-
-    <div class="form-group ">
-
-        <div class="col-sm-4">
-            <input name="session_m" type="text" ng-model="sessionConference.topic" id="session_m"
-                   class="form-control">
-        </div>
-        <div class="col-sm-8">
-
-            <button class="btn bg_1" ng-click="update()">บันทึก</button>
-        </div>
+    <div class="page-header">
+        <ol class="breadcrumb breadcrumb-arrow">
+            <li><a ng-click="remove()">ปิดการประชุม</a></li>
+            <li class="active"><span>{{sessionConference.conference.topic}}</span></li>
+        </ol>
     </div>
 
-    <div class="col-md-12" style="margin-top : 50px;"> <!-- class="col-md-12 -->
-        <div class="col-md-4">
-            <ul class="list-group">
-                <a style="text-decoration: none" data-toggle="tab" href="#home">
-                    <li class="list-group-item group-item">Home</li>
-                </a>
-                <a style="text-decoration: none" ; data-toggle="tab" href="#menu1">
-                    <li class="list-group-item group-item">วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</li>
-                </a>
-                <a style="text-decoration: none" ; data-toggle="tab" href="#menu2">
-                    <li class="list-group-item group-item">วาระที่ 2 เรื่องรับรองรายงานการประชุม</li>
-                </a>
-                <a style="text-decoration: none" ; data-toggle="tab" href="#menu3">
-                    <li class="list-group-item group-item">วาระที่ 3 เรื่องสืบเนื่อง</li>
-                </a>
-                <a style="text-decoration: none" ; data-toggle="tab" href="#menu4">
-                    <li class="list-group-item group-item">วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</li>
-                </a>
-                <a style="text-decoration: none" ; data-toggle="tab" href="#menu5">
-                    <li class="list-group-item group-item">วาระที่ 5 เรื่องอื่น ๆ</li>
-                </a>
-            </ul>
-        </div>
-        <div class="col-md-8">
-            <div class="tab-content">
-                <div id="home" class="tab-pane fade in active">
-                    <div class="text-center">
-                        <p>{{sessionConference.conference.topic}}</p>
-                        <p>{{sessionConference.conference.number}}</p>
-                        <p>{{sessionConference.conference.conferenceDate}}</p>
-                        <p>{{sessionConference.conference.conferenceTime}}</p>
-                        <p>{{sessionConference.conference.conferencePlace}}</p>
-                    </div>
-                </div>
-                <div id="menu1" class="tab-pane fade">
-                    <p><strong>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</strong></p>
-                    <div ng-repeat="content in sessionConference.conference.topic_one.contents">
-                        <p style="margin-left: 10px;"><strong>1.{{$index+1}} {{content.header}}</strong></p>
-                        <p style="margin-left: 20px;">{{content.content}}</p>
-                        <div ng-repeat="subContent in content.subContents">
-                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
-                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+    <div class="form-group ">
+        <div class="col-md-12" style="margin-top : 50px;"> <!-- class="col-md-12 -->
+            <div class="col-md-3">
+                <ul class="list-group">
+                    <a style="text-decoration: none" data-toggle="tab" href="#home">
+                        <li class="list-group-item group-item">เริ่มการประชุม</li>
+                    </a>
+                    <a style="text-decoration: none" ; data-toggle="tab" href="#menu1">
+                        <li class="list-group-item group-item">วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</li>
+                    </a>
+                    <a style="text-decoration: none" ; data-toggle="tab" href="#menu2">
+                        <li class="list-group-item group-item">วาระที่ 2 เรื่องรับรองรายงานการประชุม</li>
+                    </a>
+                    <a style="text-decoration: none" ; data-toggle="tab" href="#menu3">
+                        <li class="list-group-item group-item">วาระที่ 3 เรื่องสืบเนื่อง</li>
+                    </a>
+                    <a style="text-decoration: none" ; data-toggle="tab" href="#menu4">
+                        <li class="list-group-item group-item">วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</li>
+                    </a>
+                    <a style="text-decoration: none" ; data-toggle="tab" href="#menu5">
+                        <li class="list-group-item group-item">วาระที่ 5 เรื่องอื่น ๆ</li>
+                    </a>
+                </ul>
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                            </div>
+                            <div class="panel-body ">
+                                <p>ไฟล์ประกอบการประชุม</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="menu2" class="tab-pane fade">
-                    <p><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>
-                    <div ng-repeat="content in sessionConference.conference.topic_two.contents">
-                        <p style="margin-left: 10px;"><strong>2.{{$index+1}} {{content.header}}</strong></p>
-                        <p style="margin-left: 20px;">{{content.content}}</p>
-                        <div ng-repeat="subContent in content.subContents">
-                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
-                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                    <div id="menu1" class="tab-pane fade">
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                            </div>
+                            <div class="panel-body ">
+                                <div ng-repeat="content in sessionConference.conference.topic_one.files">
+                                    <a href="{{content.url}}" target="_blank">{{content.filename}}</a>
+                                    <hr>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="menu3" class="tab-pane fade">
-                    <p><strong>วาระที่ 3 เรื่องสืบเนื่อง</strong></p>
-                    <div ng-repeat="content in sessionConference.conference.topic_three.contents">
-                        <p style="margin-left: 10px;"><strong>3.{{$index+1}} {{content.header}}</strong></p>
-                        <p style="margin-left: 20px;">{{content.content}}</p>
-                        <div ng-repeat="subContent in content.subContents">
-                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
-                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                    <div id="menu2" class="tab-pane fade">
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                            </div>
+                            <div class="panel-body ">
+                                <div ng-repeat="content in sessionConference.conference.topic_two.files">
+                                    <a href="{{content.url}}" target="_blank">{{content.filename}}</a>
+                                    <hr>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="menu4" class="tab-pane fade">
-                    <p><strong>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</strong></p>
-                    <div ng-repeat="content in sessionConference.conference.topic_four.contents">
-                        <p style="margin-left: 10px;"><strong>4.{{$index+1}} {{content.header}}</strong></p>
-                        <p style="margin-left: 20px;">{{content.content}}</p>
-                        <div ng-repeat="subContent in content.subContents">
-                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
-                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                    <div id="menu3" class="tab-pane fade">
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                            </div>
+                            <div class="panel-body ">
+                                <div ng-repeat="content in sessionConference.conference.topic_three.files">
+                                    <a href="{{content.url}}" target="_blank">{{content.filename}}</a>
+                                    <hr>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="menu5" class="tab-pane fade">
-                    <p><strong>วาระที่ 5 เรื่องอื่นๆ</strong></p>
-                    <div ng-repeat="content in sessionConference.conference.topic_five.contents">
-                        <p style="margin-left: 10px;"><strong>5.{{$index+1}} {{content.header}}</strong></p>
-                        <p style="margin-left: 20px;">{{content.content}}</p>
-                        <div ng-repeat="subContent in content.subContents">
-                            <p style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
-                            <p style="margin-left: 40px;">{{subContent.content}}</p>
+                    <div id="menu4" class="tab-pane fade">
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                            </div>
+                            <div class="panel-body ">
+                                <div ng-repeat="content in sessionConference.conference.topic_four.files">
+                                    <a href="{{content.url}}" target="_blank">{{content.filename}}</a>
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu5" class="tab-pane fade">
+                        <div class="panel panel-info">
+                            <div class="panel-heading ">
+                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                            </div>
+                            <div  class="panel-body ">
+                                <div ng-repeat="content in sessionConference.conference.topic_five.files">
+                                    <a href="{{content.url}}" target="_blank">{{content.filename}}</a>
+                                    <hr>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> <!-- class="col-md-12 -->
+            <div class="col-md-9">
+                <div class="tab-content">
+                    <div id="home" class="tab-pane fade in active">
+                        <div class="text-center ">
+                            <p id="view">{{sessionConference.conference.topic}}</p>
+                            <p id="view">{{sessionConference.conference.number}}</p>
+                            <p id="view">{{sessionConference.conference.conferenceDate}}</p>
+                            <p id="view">{{sessionConference.conference.conferenceTime}}</p>
+                            <p id="view">{{sessionConference.conference.conferencePlace}}</p>
+                        </div>
+                    </div>
+                    <div id="menu1" class="tab-pane fade">
+                        <p id="view"><strong>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</strong></p>
+                        <div ng-repeat="content in sessionConference.conference.topic_one.contents">
+                            <p id="view" style="margin-left: 10px;"><strong>1.{{$index+1}} {{content.header}}</strong>
+                            </p>
+                            <p id="view" style="margin-left: 20px;">{{content.content}}</p>
+                            <div ng-repeat="subContent in content.subContents">
+                                <p id="view" style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                                <p id="view" style="margin-left: 40px;">{{subContent.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+                        <p id="view"><strong>วาระที่ 2 เรื่องรับรองรายงานการประชุม</strong></p>
+                        <div ng-repeat="content in sessionConference.conference.topic_two.contents">
+                            <p id="view" style="margin-left: 10px;"><strong>2.{{$index+1}} {{content.header}}</strong>
+                            </p>
+                            <p id="view" style="margin-left: 20px;">{{content.content}}</p>
+                            <div ng-repeat="subContent in content.subContents">
+                                <p id="view" style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                                <p id="view" style="margin-left: 40px;">{{subContent.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu3" class="tab-pane fade">
+                        <p id="view"><strong>วาระที่ 3 เรื่องสืบเนื่อง</strong></p>
+                        <div ng-repeat="content in sessionConference.conference.topic_three.contents">
+                            <p id="view" style="margin-left: 10px;"><strong>3.{{$index+1}} {{content.header}}</strong>
+                            </p>
+                            <p id="view" style="margin-left: 20px;">{{content.content}}</p>
+                            <div ng-repeat="subContent in content.subContents">
+                                <p id="view" style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                                <p id="view" style="margin-left: 40px;">{{subContent.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu4" class="tab-pane fade">
+                        <p id="view"><strong>วาระที่ 4 เรื่องเสนอเพื่อพิจารณา</strong></p>
+                        <div ng-repeat="content in sessionConference.conference.topic_four.contents">
+                            <p id="view" style="margin-left: 10px;"><strong>4.{{$index+1}} {{content.header}}</strong>
+                            </p>
+                            <p id="view" style="margin-left: 20px;">{{content.content}}</p>
+                            <div ng-repeat="subContent in content.subContents">
+                                <p id="view" style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                                <p id="view" style="margin-left: 40px;">{{subContent.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menu5" class="tab-pane fade">
+                        <p id="view"><strong>วาระที่ 5 เรื่องอื่นๆ</strong></p>
+                        <div ng-repeat="content in sessionConference.conference.topic_five.contents">
+                            <p id="view" style="margin-left: 10px;"><strong>5.{{$index+1}} {{content.header}}</strong>
+                            </p>
+                            <p id="view" style="margin-left: 20px;">{{content.content}}</p>
+                            <div ng-repeat="subContent in content.subContents">
+                                <p id="view" style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
+                                <p id="view" style="margin-left: 40px;">{{subContent.content}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- class="col-md-12 -->
+
+        <style>
+            .footer {
+                visibility: hidden
+            }
+
+            .navbar {
+                visibility: hidden
+            }
+        </style>
 </section>
+
 
 
