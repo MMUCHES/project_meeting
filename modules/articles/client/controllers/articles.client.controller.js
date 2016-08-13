@@ -79,9 +79,13 @@ angular.module('articles').controller('ConferenceViewController', [
 
         init();
 
+        $scope.removeFile = function () {
+            $scope.uploadedFile = null;
+            $scope.conference.topic_one.files = [];
+        };
 
-        $scope.uploadFiles = function(file, errFiles) {
-            console.log(file,errFiles)
+        $scope.uploadFiles_1 = function(file, errFiles) {
+            console.log(file,errFiles);
             $scope.uploadedFile = file;
             $scope.errFile = errFiles && errFiles[0];
             if (file) {
@@ -95,13 +99,14 @@ angular.module('articles').controller('ConferenceViewController', [
                     var newfile = {
                         filename : $scope.uploadedFile.name,
                         url : response.data.uploadedURL
+                    };
+
+                    if(!$scope.conference.topic_one.files){
+                        $scope.conference.topic_one.files = []
                     }
 
-                    if(!$scope.conference.files){
-                        $scope.conference.files = []
-                    }
+                    $scope.conference.topic_one.files.push(newfile);
 
-                    $scope.conference.files.push(newfile);
 
                     $timeout(function () {
                         file.result = response.data;
@@ -115,7 +120,150 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
+        $scope.uploadFiles_2 = function(file, errFiles) {
+            console.log(file,errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
 
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename : $scope.uploadedFile.name,
+                        url : response.data.uploadedURL
+                    };
+
+                    if(!$scope.conference.topic_one.files){
+                        $scope.conference.topic_one.files = []
+                    }
+
+
+                    $scope.conference.topic_two.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.uploadFiles_3= function(file, errFiles) {
+            console.log(file,errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename : $scope.uploadedFile.name,
+                        url : response.data.uploadedURL
+                    };
+
+                    if(!$scope.conference.topic_one.files){
+                        $scope.conference.topic_one.files = []
+                    }
+
+
+                    $scope.conference.topic_two.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.uploadFiles_4 = function(file, errFiles) {
+            console.log(file,errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename : $scope.uploadedFile.name,
+                        url : response.data.uploadedURL
+                    };
+
+                    if(!$scope.conference.topic_one.files){
+                        $scope.conference.topic_one.files = []
+                    }
+
+
+                    $scope.conference.topic_two.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.uploadFiles_5 = function(file, errFiles) {
+            console.log(file,errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename : $scope.uploadedFile.name,
+                        url : response.data.uploadedURL
+                    };
+
+                    if(!$scope.conference.topic_one.files){
+                        $scope.conference.topic_one.files = []
+                    }
+
+
+                    $scope.conference.topic_two.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
 
 
 

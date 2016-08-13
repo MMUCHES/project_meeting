@@ -34,11 +34,13 @@ var ConferenceSchema = new Schema({
 
     topic_one: {
         title: String,
-        contents: [Content]
+        contents: [Content],
+        files : [ConferenceFile]
     },
     topic_two: {
         title: String,
-        contents: [Content]
+        contents: [Content],
+        files : [ConferenceFile]
     },
     topic_three: {
         title: String,

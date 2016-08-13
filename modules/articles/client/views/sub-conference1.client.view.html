@@ -2,7 +2,8 @@
 
     <div class="page-header">
         <ol class="breadcrumb breadcrumb-arrow">
-            <li><a ui-sref="conferences.subconference({conferenceId: conference._id})">แก้ไขระเบียบวาระการประชุม</a></li>
+            <li><a ui-sref="conferences.subconference({conferenceId: conference._id})">แก้ไขระเบียบวาระการประชุม</a>
+            </li>
             <li class="active"><span>วาระที่ 1 เรื่องแจ้งให้ที่ประชุมทราบ</span></li>
         </ol>
     </div>
@@ -19,20 +20,16 @@
                             type="button"> บันทึกการแก้ไข
                     </button>
 
-                    <div ng-repeat="content in conference.files ">
-                        <p>{{content.filename}}</p>
-                    </div>
-
-
                     <div class="form-group" >
                         <label for="title">Featured Image </label>
                         <button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
-                                ngf-select="uploadFiles($file, $invalidFiles)"
+                                ngf-select="uploadFiles_1($file, $invalidFiles)"
                                 ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
                                 accept="image/*" ngf-max-size="1MB">
-                            Select Featured Image</button>
+                            Select Featured Image
+                        </button>
                         <div class="text-center">
-                            <img ng-show="conference.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
+                            <img ng-show="conference.topic_one.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
                         </div>
                         <div class="text-center">
                             <div class="progress" ng-show="uploadedFile.progress >= 0">
@@ -41,11 +38,20 @@
                             </div>
                         </div>
                         <div class="text-center">
-                            <button type="button" class="btn btn-secondary" ng-click="removeFile()" ng-show="uploadedFile">Remove</button>
+                            <button type="button" class="btn btn-secondary" ng-click="removeFile()"
+                                    ng-show="uploadedFile">Remove
+                            </button>
                         </div>
-                        <div class="alert alert-danger" ng-show="conference.file.$error.maxSize">File too large
-                            {{errorFiles[0].size / 1000000|number:1}}MB: max 1M</div>
+                        <div class="alert alert-danger" ng-show="conference.topic_one.file.$error.maxSize">File too large
+                            {{errorFiles[0].size / 1000000|number:1}}MB: max 1M
+                        </div>
                     </div>
+
+                    <div ng-repeat="content in conference.topic_one.files ">
+                        <p>{{content.filename}}</p>
+                        <img ng-src="{{content.url}}" id="photo-id" height="100"/>
+                    </div>
+
 
 
                 </div>
