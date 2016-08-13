@@ -120,6 +120,14 @@ angular.module('articles').controller('ConferenceViewController', [
                 });
             }
         };
+
+
+
+        $scope.removeUploadFiles_1 = function (conference, topic_one ,files, index) {
+            conference.topic_one.files.splice(index, 1);
+            $scope.update();
+        };
+
         $scope.uploadFiles_2 = function(file, errFiles) {
             console.log(file,errFiles);
             $scope.uploadedFile = file;

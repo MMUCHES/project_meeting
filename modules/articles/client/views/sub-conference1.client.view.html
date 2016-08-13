@@ -47,10 +47,29 @@
                         </div>
                     </div>
 
-                    <div ng-repeat="content in conference.topic_one.files ">
-                        <p>{{content.filename}}</p>
-                        <img ng-src="{{content.url}}" id="photo-id" height="100"/>
-                    </div>
+                    <!--<div ng-repeat="content in conference.topic_one.files ">-->
+                        <!--<p>{{content.filename}}</p>-->
+                        <!--<img ng-src="{{content.url}}" id="photo-id" height="100"/>-->
+                    <!--</div>-->
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ลำดับ</th>
+                            <th>ชื่อ</th>
+                            <th>จัดการ</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="content in conference.topic_one.files">
+                            <td>{{$index+1}}</td>
+                            <td>{{content.filename}}</td>
+                            <td>
+                                <button class="btn btn-sm btn-danger"
+                                        ng-click="removeUploadFiles_1(conference,topic_one,files,$index)">ลบ</button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
 
 
 
