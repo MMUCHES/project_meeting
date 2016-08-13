@@ -19,172 +19,158 @@
                     <button class="btn bg_1  glyphicon glyphicon-saved" ng-click="update()"
                             type="button"> บันทึกการแก้ไข
                     </button>
-
-                    <div class="form-group" >
-                        <label for="title">Featured Image </label>
-                        <button type="button" class="btn btn-secondary" ng-show="uploadedFile == null" type="file"
-                                ngf-select="uploadFiles_1($file, $invalidFiles)"
-                                ng-model="uploadedFile" name="file" ngf-model-invalid="errorFiles"
-                                accept="image/*" ngf-max-size="1MB">
-                            Select Featured Image
-                        </button>
-                        <div class="text-center">
-                            <img ng-show="conference.topic_one.file.$valid" ngf-thumbnail="uploadedFile" class="thumb">
-                        </div>
-                        <div class="text-center">
-                            <div class="progress" ng-show="uploadedFile.progress >= 0">
-                                <div style="width:{{uploadedFile.progress}}%"
-                                     ng-bind="uploadedFile.progress + '%'"></div>
-                            </div>
-                        </div>
-                        <div class="text-center">
-                            <button type="button" class="btn btn-secondary" ng-click="removeFile()"
-                                    ng-show="uploadedFile">Remove
-                            </button>
-                        </div>
-                        <div class="alert alert-danger" ng-show="conference.topic_one.file.$error.maxSize">File too large
-                            {{errorFiles[0].size / 1000000|number:1}}MB: max 1M
-                        </div>
-                    </div>
-
-                    <!--<div ng-repeat="content in conference.topic_one.files ">-->
-                        <!--<p>{{content.filename}}</p>-->
-                        <!--<img ng-src="{{content.url}}" id="photo-id" height="100"/>-->
-                    <!--</div>-->
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>ลำดับ</th>
-                            <th>ชื่อ</th>
-                            <th>จัดการ</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr ng-repeat="content in conference.topic_one.files">
-                            <td>{{$index+1}}</td>
-                            <td>{{content.filename}}</td>
-                            <td>
-                                <button class="btn btn-sm btn-danger"
-                                        ng-click="removeUploadFiles_1(conference,topic_one,files,$index)">ลบ</button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-
-
-
+                    <button type="button" class="btn bg_1  glyphicon glyphicon-upload" type="file"
+                            ngf-select="uploadFiles_1($file, $invalidFiles)"
+                            ng-model="uploadedFile"> เพิ่มไฟล์
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    <div class="table-responsive">
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th>ลำดับ</th>
-                <th>หัวข้อ</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="content in conference.topic_one.contents ">
-                <td class="col-sm-1">1.{{$index+1}}</td>
-                <td class="">
+    </div>
+<div class="row">
+    <div class="mainbox col-md-6 ">
+        <div class="panel panel-info">
 
-                    <div class="media">
-                        <div class="media-body">
-                            <h4 class="media-heading" ng-show="!content.isEditMode">
-                                {{content.header}}
-                            </h4>
-                            <div class="media-heading " ng-show="content.isEditMode">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
-                                    <div class="col-sm-10">
-                                        <input class="form-control" type="text" ng-model="content.header">
+            <div style="padding-top:30px" class="panel-body ">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th style="width: 5%">ลำดับ</th>
+                        <th style="width: 40%">ชื่อ</th>
+                        <th style="width: 5%">จัดการ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="content in conference.topic_one.files">
+                        <td>{{$index+1}}</td>
+                        <td><a  href="{{content.url}}"  target="_blank">{{content.filename}}</a></td>
+                        <td>
+                            <button class="btn btn-sm btn-danger"
+                                    ng-click="removeUploadFiles_1(conference,topic_one,files,$index)">ลบ
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>ลำดับ</th>
+                    <th>หัวข้อ</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="content in conference.topic_one.contents ">
+                    <td class="col-sm-1">1.{{$index+1}}</td>
+                    <td class="">
+
+                        <div class="media">
+                            <div class="media-body">
+                                <h4 class="media-heading" ng-show="!content.isEditMode">
+                                    {{content.header}}
+                                </h4>
+                                <div class="media-heading " ng-show="content.isEditMode">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
+                                        <div class="col-sm-10">
+                                            <input class="form-control" type="text" ng-model="content.header">
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <p ng-show="!content.isEditMode">
-                                {{content.content}}
-                            </p>
-                            <div class="form-group" ng-show="content.isEditMode">
-                                <label class="col-sm-2 control-label">สาระสำคัญ</label>
-                                <div class="col-sm-10">
+                                <p ng-show="!content.isEditMode">
+                                    {{content.content}}
+                                </p>
+                                <div class="form-group" ng-show="content.isEditMode">
+                                    <label class="col-sm-2 control-label">สาระสำคัญ</label>
+                                    <div class="col-sm-10">
                                     <textarea class="form-control" rows="5" ng-show="content.isEditMode"
                                               ng-model="content.content"></textarea>
+                                    </div>
                                 </div>
+
+
                             </div>
+                            <div class="media-right">
+                                <button ng-show="!content.isEditMode" class="btn btn-info btn-block" type="button"
+                                        ng-click="toggleEditContent(conference.topic_one,content,$index)">
+                                    แก้ไข
+                                </button>
+                                <button ng-show="content.isEditMode" class="btn btn-info btn-block" type="button"
+                                        ng-click="toggleEditContent(conference.topic_one,content,$index)">
+                                    บันทึก
+                                </button>
+                                <button class="btn btn-primary btn-block" type="button"
+                                        ng-click="addSubDetailContent(conference.topic_one,content,$index)">
+                                    เพิ่มรายละเอียด
+                                </button>
+                                <button class="btn btn-danger btn-block" type="button"
+                                        ng-click="removeContent(conference.topic_one,content,$index)">ลบ
+                                </button>
+                            </div>
+                            <div class="media" ng-repeat="subContent in content.subContents">
+                                <hr/>
+                                <div class="media">
+                                    <div class="media-body">
 
-
-                        </div>
-                        <div class="media-right">
-                            <button ng-show="!content.isEditMode" class="btn btn-info btn-block" type="button"
-                                    ng-click="toggleEditContent(conference.topic_one,content,$index)">
-                                แก้ไข
-                            </button>
-                            <button ng-show="content.isEditMode" class="btn btn-info btn-block" type="button"
-                                    ng-click="toggleEditContent(conference.topic_one,content,$index)">
-                                บันทึก
-                            </button>
-                            <button class="btn btn-primary btn-block" type="button"
-                                    ng-click="addSubDetailContent(conference.topic_one,content,$index)">เพิ่มรายละเอียด
-                            </button>
-                            <button class="btn btn-danger btn-block" type="button"
-                                    ng-click="removeContent(conference.topic_one,content,$index)">ลบ
-                            </button>
-                        </div>
-                        <div class="media" ng-repeat="subContent in content.subContents">
-                            <hr/>
-                            <div class="media">
-                                <div class="media-body">
-
-                                    <h4 class="media-heading" ng-show="!subContent.isEditMode">
-                                        {{subContent.header}}
-                                    </h4>
-                                    <div class="media-heading" ng-show="subContent.isEditMode">
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
+                                        <h4 class="media-heading" ng-show="!subContent.isEditMode">
+                                            {{subContent.header}}
+                                        </h4>
+                                        <div class="media-heading" ng-show="subContent.isEditMode">
+                                            <div class="form-group">
+                                                <label class="col-sm-2 control-label">ชื่อเรื่อง</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control" type="text"
+                                                           ng-model="subContent.header"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <p ng-show="!subContent.isEditMode" placeholder="Enter password">
+                                            {{subContent.content}}
+                                        </p>
+                                        <div class="form-group" ng-show="subContent.isEditMode">
+                                            <label class="col-sm-2 control-label">สาระสำคัญ</label>
                                             <div class="col-sm-10">
-                                                <input class="form-control" type="text" ng-model="subContent.header"/>
+                                            <textarea class="form-control" rows="5" ng-show="subContent.isEditMode"
+                                                      ng-model="subContent.content"></textarea>
                                             </div>
                                         </div>
                                     </div>
-                                    <p ng-show="!subContent.isEditMode" placeholder="Enter password">
-                                        {{subContent.content}}
-                                    </p>
-                                    <div class="form-group" ng-show="subContent.isEditMode">
-                                        <label class="col-sm-2 control-label">สาระสำคัญ</label>
-                                        <div class="col-sm-10">
-                                            <textarea class="form-control" rows="5" ng-show="subContent.isEditMode"
-                                                      ng-model="subContent.content"></textarea>
-                                        </div>
+                                    <div class="media-right">
+                                        <button ng-show="!subContent.isEditMode" class="btn btn-info btn-block"
+                                                type="button"
+                                                ng-click="toggleEditDetailContent(content,subContent,$index)">
+                                            แก้ไข
+                                        </button>
+                                        <button ng-show="subContent.isEditMode" class="btn btn-info btn-block"
+                                                type="button"
+                                                ng-click="toggleEditDetailContent(content,subContent,$index)">
+                                            บันทึก
+                                        </button>
+                                        <button class="btn btn-danger btn-block" type="button"
+                                                ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
+                                        </button>
                                     </div>
-                                </div>
-                                <div class="media-right">
-                                    <button ng-show="!subContent.isEditMode" class="btn btn-info btn-block"
-                                            type="button"
-                                            ng-click="toggleEditDetailContent(content,subContent,$index)">
-                                        แก้ไข
-                                    </button>
-                                    <button ng-show="subContent.isEditMode" class="btn btn-info btn-block" type="button"
-                                            ng-click="toggleEditDetailContent(content,subContent,$index)">
-                                        บันทึก
-                                    </button>
-                                    <button class="btn btn-danger btn-block" type="button"
-                                            ng-click="removeSubDetailContent(content,subContent,$index)">ลบ
-                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <style type="text/css">
-        .table.no-border tr td, .table.no-border tr th {
-            border-width: 0;
-        }
-    </style>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <style type="text/css">
+            .table.no-border tr td, .table.no-border tr th {
+                border-width: 0;
+            }
+        </style>
 
 </section>
