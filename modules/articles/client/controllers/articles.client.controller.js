@@ -68,6 +68,8 @@ angular.module('articles').controller('ConferenceViewController', [
     function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
 
+
+
         $scope.conference = {};
         function init() {
             $scope.conferences = Conferences.get({
@@ -423,6 +425,8 @@ angular.module('articles').controller('SessionAdminController', [
     'SessionConference',
     function ($scope, $sce, $stateParams, $location, Authentication, Socket, Conferences, Upload, $timeout, SessionConference) {
         $scope.authentication = Authentication;
+
+
 
         $scope.sessionConference = {};
         function init() {
