@@ -2,7 +2,7 @@
 
     <div class="page-header">
         <ol class="breadcrumb breadcrumb-arrow">
-            <li><a ng-click="remove()">ปิดการประชุม</a></li>
+            <li><a ng-click="remove()"  onclick="exitFullscreen(document.documentElement);" >ปิดการประชุม</a></li>
             <li class="active"><span>{{sessionConference.conference.topic}}</span></li>
         </ol>
     </div>
@@ -37,14 +37,14 @@
                                 <div class="panel-title">ไฟล์ประกอบการประชุม</div>
                             </div>
                             <div class="panel-body ">
-                                <p>ไฟล์ประกอบการประชุม</p>
+                                <p>ไฟล์ประกอบการประชุม วาระที่ 1</p>
                             </div>
                         </div>
                     </div>
                     <div id="menu1" class="tab-pane fade">
                         <div class="panel panel-info">
                             <div class="panel-heading ">
-                                <div class="panel-title">ไฟล์ประกอบการประชุม</div>
+                                <div class="panel-title">ไฟล์ประกอบการประชุม วาระที่ 1</div>
                             </div>
                             <div class="panel-body ">
                                 <div ng-repeat="content in sessionConference.conference.topic_one.files">
@@ -192,6 +192,30 @@
                 visibility: hidden
             }
         </style>
+        <script>
+            function launchFullscreen(element) {
+                if (element.requestFullscreen) {
+                    element.requestFullscreen();
+                } else if (element.mozRequestFullScreen) {
+                    element.mozRequestFullScreen();
+                } else if (element.webkitRequestFullscreen) {
+                    element.webkitRequestFullscreen();
+                } else if (element.msRequestFullscreen) {
+                    element.msRequestFullscreen();
+                }
+            }
+
+            function exitFullscreen() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                }
+            }
+
+        </script>
 </section>
 
 

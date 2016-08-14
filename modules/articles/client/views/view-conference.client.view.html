@@ -47,7 +47,7 @@
                                            class="glyphicon glyphicon-fullscreen"> ดูต้นแบบการประชุม</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a  ng-click="createsession()"
-                                           class="glyphicon glyphicon-eye-open"> เปิดการประชุม</a></li>
+                                           class="glyphicon glyphicon-eye-open" onclick="launchFullscreen(document.documentElement);"> เปิดการประชุม</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a id="myBtn" class="glyphicon glyphicon-trash"> ลบการประชุม</a></li>
                                 </ul>
@@ -55,6 +55,32 @@
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    function launchFullscreen(element) {
+                        if (element.requestFullscreen) {
+                            element.requestFullscreen();
+                        } else if (element.mozRequestFullScreen) {
+                            element.mozRequestFullScreen();
+                        } else if (element.webkitRequestFullscreen) {
+                            element.webkitRequestFullscreen();
+                        } else if (element.msRequestFullscreen) {
+                            element.msRequestFullscreen();
+                        }
+                    }
+
+                    function exitFullscreen() {
+                        if (document.exitFullscreen) {
+                            document.exitFullscreen();
+                        } else if (document.mozCancelFullScreen) {
+                            document.mozCancelFullScreen();
+                        } else if (document.webkitExitFullscreen) {
+                            document.webkitExitFullscreen();
+                        }
+                    }
+
+                </script>
+
                 <!--<div>-->
                     <!--<button ng-click="createsession()" class="btn btn-danger">สร้าง</button>-->
                 <!--</div>-->
