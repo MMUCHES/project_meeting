@@ -64,9 +64,9 @@ angular.module('articles').controller('ConferenceCreateController', ['$scope', '
 //noinspection JSAnnotator
 angular.module('articles').controller('ConferenceViewController', [
     '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Conferences', 'Upload', '$timeout',
-    'SessionConference',
-    function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
-        $scope.authentication = Authentication;
+            'SessionConference',
+            function ($scope, $sce, $stateParams, $location, Authentication, Conferences, Upload, $timeout, SessionConference) {
+                $scope.authentication = Authentication;
 
 
 
@@ -515,6 +515,217 @@ angular.module('articles').controller('SessionAdminController', [
                 user.isEditMode = true;
 
             }
+        };
+
+
+        $scope.uploadFiles_1 = function (file, errFiles) {
+            console.log(file, errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
+                    };
+
+                    if (!$scope.sessionConference.conference.topic_one.files) {
+                        $scope.sessionConference.conference.topic_one.files = []
+                    }
+
+                    $scope.sessionConference.conference.topic_one.files.push(newfile);
+
+
+                    $timeout(function () {
+                        file.result = response.data;
+                        $scope.update();
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.removeUploadFiles_1 = function (conference, topic_one, files, index) {
+            conference.topic_one.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_2 = function (file, errFiles) {
+            console.log(file, errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
+                    };
+
+                    if (!$scope.conference.topic_two.files) {
+                        $scope.conference.topic_two.files = []
+                    }
+
+
+                    $scope.conference.topic_two.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                        $scope.update();
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.removeUploadFiles_2 = function (conference, topic_two, files, index) {
+            conference.topic_two.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_3 = function (file, errFiles) {
+            console.log(file, errFiles);
+            $scope.uploaddFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
+                    };
+
+                    if (!$scope.conference.topic_three.files) {
+                        $scope.conference.topic_three.files = []
+                    }
+
+
+                    $scope.conference.topic_three.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                        $scope.update();
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.removeUploadFiles_3 = function (conference, topic_three, files, index) {
+            conference.topic_three.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_4 = function (file, errFiles) {
+            console.log(file, errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
+                    };
+
+                    if (!$scope.conference.topic_four.files) {
+                        $scope.conference.topic_four.files = []
+                    }
+
+
+                    $scope.conference.topic_four.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                        $scope.update();
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.removeUploadFiles_4 = function (conference, topic_four, files, index) {
+            conference.topic_four.files.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.uploadFiles_5 = function (file, errFiles) {
+            console.log(file, errFiles);
+            $scope.uploadedFile = file;
+            $scope.errFile = errFiles && errFiles[0];
+            if (file) {
+                file.upload = Upload.upload({
+                    url: '/api/uploads',
+                    data: {uploadedFile: file}
+                });
+
+                file.upload.then(function (response) {
+                    console.log('File is successfully uploaded to ' + response.data.uploadedURL);
+                    var newfile = {
+                        filename: $scope.uploadedFile.name,
+                        url: response.data.uploadedURL
+                    };
+
+                    if (!$scope.conference.topic_five.files) {
+                        $scope.conference.topic_five.files = []
+                    }
+
+
+                    $scope.conference.topic_five.files.push(newfile);
+
+                    $timeout(function () {
+                        file.result = response.data;
+                        $scope.update();
+                    });
+                }, function (response) {
+                    if (response.status > 0)
+                        $scope.errorMsg = response.status + ': ' + response.data;
+                }, function (evt) {
+                    file.progress = Math.min(100, parseInt(100.0 *
+                        evt.loaded / evt.total));
+                });
+            }
+        };
+        $scope.removeUploadFiles_5 = function (conference, topic_five, files, index) {
+            conference.topic_five.files.splice(index, 1);
+            $scope.update();
         };
 
     }
