@@ -419,6 +419,8 @@ angular.module('articles').controller('ConferenceListController', ['$scope', 'Se
     }
 ]);
 
+// ng-show="authentication.user._id == sessionConference.user._id"
+
 //noinspection JSAnnotator
 angular.module('articles').controller('SessionAdminController', [
     '$scope', '$sce', '$stateParams', '$location', 'Authentication', 'Socket', 'Conferences', 'Upload', '$timeout',
@@ -463,6 +465,57 @@ angular.module('articles').controller('SessionAdminController', [
             });
         };
 
+
+        $scope.newContent = {};
+        $scope.addSubContent = function (topic, content) {
+
+            topic.contents.push(content);
+            $scope.newContent = {};
+            content.isEditMode = true;
+        };
+
+        $scope.removeContent = function (topic, content, index) {
+            topic.contents.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.removeSubDetailContent = function (content, subContent, index) {
+            content.subContents.splice(index, 1);
+            $scope.update();
+        };
+
+        $scope.addSubDetailContent = function (topic, content, index) {
+            content.subContents.push({
+                header: '',
+                content: '',
+                isEditMode: true
+            });
+        };
+        $scope.toggleEditContent = function (topic, content, index) {
+            if (content.isEditMode) {
+                content.isEditMode = !content.isEditMode;
+                $scope.update();
+            } else {
+                content.isEditMode = true;
+            }
+        };
+        $scope.toggleEditDetailContent = function (topic, subContent, index) {
+            if (subContent.isEditMode) {
+                subContent.isEditMode = !subContent.isEditMode;
+                $scope.update();
+            } else {
+                subContent.isEditMode = true;
+            }
+        };
+        $scope.toggleDeleteposition = function (topic, user, index) {
+            if (user.isEditMode) {
+                user.isEditMode = !user.isEditMode;
+                $scope.removeSubUser();
+            } else {
+                user.isEditMode = true;
+
+            }
+        };
 
     }
 ]);

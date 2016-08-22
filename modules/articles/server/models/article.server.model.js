@@ -12,6 +12,7 @@ var ConferenceFile = new Schema({
 var Content = new Schema({
     header: String,
     content: String,
+    status: String,
     files: [ConferenceFile],
     subContents : [this]
 });
@@ -70,6 +71,10 @@ var SessionConference = new Schema({
     conference : ConferenceSchema,
     topic : Number,
     current_content : Content,
+    user: {
+        type: Schema.ObjectId,
+        ref: 'User'
+    }
 
 })
 
