@@ -209,6 +209,18 @@
                                                             </div>
                                                         </div>
 
+                                                        <p ng-show="!content.isEditMode">
+                                                        <strong>มติที่ประชุม</strong> {{content.status}}
+                                                       </p>
+                                                        <div class="media-heading " ng-show="content.isEditMode">
+                                                            <div class="form-group">
+                                                                <label class="col-sm-2 control-label">มติที่ประชุม</label>
+                                                                <div class="col-sm-10">
+                                                                    <input class="form-control" type="text" ng-model="content.status">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
 
                                                     </div>
                                                     <div class="media-right">
@@ -296,6 +308,9 @@
                                     <p id="view" style="margin-left: 20px;"><strong>{{subContent.header}}</strong></p>
                                     <p id="view" style="margin-left: 40px;">{{subContent.content}}</p>
                                 </div>
+                                <p>
+                                    <strong>มติที่ประชุม</strong> {{content.status}}
+                                </p>
                             </div>
                             </div>
                         </div>
